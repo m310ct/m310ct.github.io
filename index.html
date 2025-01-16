@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M310ct&#39;s blog</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/tailwind.css">
+  <!-- <link rel="stylesheet" href="/css/search.css"> -->
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="bg-black">
+  <!-- 顶部导航栏 -->
+  <div class="sticky top-0 z-50">
+    
+<header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
+    <div class="container mx-auto flex items-center justify-between space-x-8">
+    
+      <h1 class="text-2xl font-bold ml-[100px] md:ml-0 animate-pulse text-hacker-color1 md:mr-[20%]">
+        <a href="/" class="hover:text-white transition-colors select-none">
+          
+        </a>
+      </h1>
+  
+    <!-- 大屏幕 -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          
+            <li>
+              <a href="/" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Home
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Archives
+              </a>
+            </li>
+          
+            <li>
+              <a href="/categories" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Categories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Tags
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/rss.xml" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                RSS
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+  
+      <!-- 小屏幕 -->
+      <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- 折叠菜单 -->
+    <nav id="mobile-menu" class="hidden bg-black">
+      <ul class="space-y-2 py-4 px-6">
+        
+          <li>
+            <a href="/" class="block text-white hover:text-hacker-color1 transition-colors">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/archives" class="block text-white hover:text-hacker-color1 transition-colors">
+              Archives
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories" class="block text-white hover:text-hacker-color1 transition-colors">
+              Categories
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags" class="block text-white hover:text-hacker-color1 transition-colors">
+              Tags
+            </a>
+          </li>
+        
+          <li>
+            <a href="/about" class="block text-white hover:text-hacker-color1 transition-colors">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/rss.xml" class="block text-white hover:text-hacker-color1 transition-colors">
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+  
+    <!-- RSS Link -->
+    <link rel="alternate" type="application/rss+xml" title=" RSS" href="/rss.xml" />
+  </header>
+
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        } else {
+        mobileMenu.classList.add("hidden");
+        }
+    });
+    });
+
+  </script>
+  
+  </div>
+  
+  <main class="w-screen min-h-screen container mx-auto">
+    <!-- 欢迎页面 -->
+    <div class="min-h-screen bg-black text-center flex flex-col justify-center items-center h-screen">
+        <h1 class="
+        text-hacker-color2 font-dos md:text-huge text-3xl text-wrap animate-bounce select-none bg-red-400 md:min-h-[5rem] md:leading-[5rem] 
+        bg-gradient-to-r from-hacker-color1 to-hacker-color2 bg-clip-text text-transparent md:-mt-80 -mt-40
+        ">Welcome to M310ct&#39;s blog !!!</h1>
+        <hr class="w-[85%] border-t-2 border-line-color border-dashed">
+        
+        <p class="text-hacker-color2 md:mt-40 mt-20 md:text-2xl text-lg text-wrap font-dos w-[70%] select-none">这是一个专注于网络安全与编程的博客，记录我的学习与探索。</p>
+
+        <!-- 下拉按钮 -->
+        <svg id="down-btn" class="icon w-16 h-16 absolute top-[75%] hover:-translate-y-1 transition-all cursor-pointer" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#bbbbbb">
+          <path d="M185.884 327.55 146.3 367.133 512.021 732.779 877.7 367.133 838.117 327.55 511.997 653.676Z"></path>
+        </svg>
+    </div>
+
+    <!-- 博客文章与侧边栏 -->
+    <div class="min-h-screen flex gap-8" id="scr-target">
+      <!-- 文章部分 -->
+      <div class="w-full">
+        
+          <div class="post-item group border-b border-b-hacker-color3 ">
+            <a href="/2025/01/16/hello-world/" class="block py-2 px-8 group-hover:bg-hacker-hover-color space-y-4">
+              <h2 class="post-title text-hacker-color1 group-hover:text-white font-bold text-2xl">
+                Hello World
+              </h2>
+              <p class="post-meta text-hacker-color3 text-sm group-hover:text-white">
+                2025-01-16
+              </p>
+              <p class="post-excerpt text-hacker-color3 group-hover:text-white">
+                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick StartCreate a new post$ hexo new &amp;quot;My New Post&amp;quot;
+
+More info: Writing
+Run server$ hexo serve...
+              </p>
+            </a>
+          </div>
+        
+      </div>
+      
+
+      <!-- 侧边部分 -->
+      
+    <div class="w-1/3 hidden md:block space-y-4 mt-8">
+      
+        
+          <!-- 搜索框 -->
+          <input type="text" id="search-input" placeholder="Search..." class="w-full p-2.5 text-lg mb-5 border-2 border-line-color rounded bg-black text-white placeholder-gray-400"/>
+          <div id="search-results"></div>
+        
+  
+        
+  
+        
+  
+        
+  
+        
+  
+      
+        
+  
+        
+          <!-- 公告栏 -->
+          <div class=" text-white p-4 rounded-md border-2 border-dashed border-line-color mb-4">
+            <h3 class="font-bold text-lg text-hacker-color1">Notice</h3>
+            <p class="mt-4">欢迎来到m310ct的博客，有问题请联系我！</p>
+          </div>
+        
+  
+        
+  
+        
+  
+        
+  
+      
+        
+  
+        
+  
+        
+          <!-- 分类部分 -->
+          <h3 class="text-hacker-color1 font-bold text-lg">Categories</h3>
+          <div>
+            
+            
+          </div>
+          <hr class="w-full border-t-2 border-line-color border-dashed">
+        
+  
+        
+  
+        
+  
+      
+        
+  
+        
+  
+        
+  
+        
+          <!-- 标签部分 -->
+          <h3 class="text-hacker-color1 font-bold text-lg">Tags</h3>
+          <div class="flex flex-wrap justify-start items-center">
+            
+            
+          </div>
+          <hr class="w-full border-t-2 border-line-color border-dashed">
+        
+  
+        
+  
+      
+        
+  
+        
+  
+        
+  
+        
+  
+        
+          <!-- 链接部分 -->
+          <h3 class="text-hacker-color1 font-bold text-lg">Links</h3>
+          <div>
+            
+              <a href="https://space.bilibili.com/1515974075?spm_id_from=333.1387.fans.user_card.click" target="_blank" class="text-hacker-color3 hover:text-white">
+                b站主页
+              </a>
+              <br />
+            
+              <a href="https://github.com/m310ct" target="_blank" class="text-hacker-color3 hover:text-white">
+                github主页
+              </a>
+              <br />
+            
+              <a href="mailto:3575160075@qq.com" target="_blank" class="text-hacker-color3 hover:text-white">
+                电子邮箱
+              </a>
+              <br />
+            
+          </div>
+          <hr class="w-full border-t-2 border-line-color border-dashed">
+        
+  
+      
+    </div>
+  
+  
+  
+  
+  
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./js/search.js"></script>
+
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="bg-black text-gray-400 py-4">
+    <div class="container mx-auto text-center">
+      <p>© <span id="current-year"></span>  m310ct 
+        <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexpolit">Hexpolit</a></p>
+    </div>
+  </footer>
+  
+  <script> 
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+  
+</body>
+<script src="./js/scroll.js"></script>
+
+</html>

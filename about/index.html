@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about - About</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    
+<header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
+    <div class="container mx-auto flex items-center justify-between space-x-8">
+    
+      <h1 class="text-2xl font-bold ml-[100px] md:ml-0 animate-pulse text-hacker-color1 md:mr-[20%]">
+        <a href="/" class="hover:text-white transition-colors select-none">
+          
+        </a>
+      </h1>
+  
+    <!-- 大屏幕 -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          
+            <li>
+              <a href="/" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Home
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Archives
+              </a>
+            </li>
+          
+            <li>
+              <a href="/categories" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Categories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Tags
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/rss.xml" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                RSS
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+  
+      <!-- 小屏幕 -->
+      <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- 折叠菜单 -->
+    <nav id="mobile-menu" class="hidden bg-black">
+      <ul class="space-y-2 py-4 px-6">
+        
+          <li>
+            <a href="/" class="block text-white hover:text-hacker-color1 transition-colors">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/archives" class="block text-white hover:text-hacker-color1 transition-colors">
+              Archives
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories" class="block text-white hover:text-hacker-color1 transition-colors">
+              Categories
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags" class="block text-white hover:text-hacker-color1 transition-colors">
+              Tags
+            </a>
+          </li>
+        
+          <li>
+            <a href="/about" class="block text-white hover:text-hacker-color1 transition-colors">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/rss.xml" class="block text-white hover:text-hacker-color1 transition-colors">
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+  
+    <!-- RSS Link -->
+    <link rel="alternate" type="application/rss+xml" title=" RSS" href="/rss.xml" />
+  </header>
+
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        } else {
+        mobileMenu.classList.add("hidden");
+        }
+    });
+    });
+
+  </script>
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="bg-black text-hacker-color3 container mx-auto ">
+    <h1 class="text-4xl text-hacker-color1 font-bold font-dos">about</h1>
+    <hr class="border-t-2 border-line-color border-dashed my-4">
+    
+
+    <div class="prose prose-invert h-screen container mx-auto flex justify-center">
+        <div>
+            <h1 id="个人介绍"><a href="#个人介绍" class="headerlink" title="个人介绍"></a>个人介绍</h1><p>你好！欢迎来到我的博客。我是一个17岁的学生，热衷于网络安全、编程以及技术相关的学习与探索。</p>
+<h2 id="技能与兴趣"><a href="#技能与兴趣" class="headerlink" title="技能与兴趣"></a>技能与兴趣</h2><ul>
+<li><strong>编程语言</strong>：Python, JavaScript, Java, PHP, C, C++</li>
+<li><strong>网络安全</strong>：Web 渗透测试、二进制安全、APT</li>
+<li><strong>工具与技术</strong>：Linux, Git, Docker, Nginx</li>
+</ul>
+<h2 id="学习历程"><a href="#学习历程" class="headerlink" title="学习历程"></a>学习历程</h2><p>我一直对计算机科学充满兴趣，尤其是在网络安全和编程方面。未来将专注于APT方向。</p>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><ul>
+<li>邮箱：<a href="mailto:&#x33;&#x35;&#55;&#53;&#x31;&#54;&#48;&#x30;&#55;&#53;&#x40;&#113;&#x71;&#x2e;&#99;&#111;&#x6d;">3575160075@qq.com</a></li>
+<li>GitHub：<a target="_blank" rel="noopener" href="https://github.com/m310ct">m310ct</a></li>
+</ul>
+<p>感谢你的阅读！如果你有任何问题或想要交流，欢迎随时联系我。</p>
+
+        </div>
+    </div>
+</body>
+<footer class="bg-black text-gray-400 py-4">
+    <div class="container mx-auto text-center">
+      <p>© <span id="current-year"></span>  m310ct 
+        <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexpolit">Hexpolit</a></p>
+    </div>
+  </footer>
+  
+  <script> 
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+  
+</html>
