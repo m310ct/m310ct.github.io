@@ -51,6 +51,12 @@
             </li>
           
             <li>
+              <a href="/htb-wp" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                
+              </a>
+            </li>
+          
+            <li>
               <a href="/rss.xml" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
                 RSS
               </a>
@@ -98,6 +104,12 @@
           <li>
             <a href="/about" class="block text-white hover:text-hacker-color1 transition-colors">
               About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/htb-wp" class="block text-white hover:text-hacker-color1 transition-colors">
+              
             </a>
           </li>
         
@@ -168,7 +180,7 @@
           <!-- 公告栏 -->
           <div class=" text-white p-4 rounded-md border-2 border-dashed border-line-color mb-4">
             <h3 class="font-bold text-lg text-hacker-color1">Notice</h3>
-            <p class="mt-4">欢迎来到m310ct的博客，有问题请联系我！</p>
+            <p class="mt-4">欢迎来到m310ct的博客，技术交流请联系我！</p>
           </div>
         
   
@@ -245,7 +257,7 @@
               </a>
               <br />
             
-              <a href="mailto:3575160075@qq.com" target="_blank" class="text-hacker-color3 hover:text-white">
+              <a href="mailto:0x310ct@gmail.com" target="_blank" class="text-hacker-color3 hover:text-white">
                 电子邮箱
               </a>
               <br />
@@ -268,5 +280,17 @@
 
 
     </div>
+    <footer class="bg-black text-gray-400 py-4">
+    <div class="container mx-auto text-center">
+      <p>© <span id="current-year"></span>  m310ct 
+        <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexploit">Hexpolit</a></p>
+    </div>
+  </footer>
+  
+  <script> 
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+  
+
 </body>
 </html>
