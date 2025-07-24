@@ -13,6 +13,11 @@
     transform: scaleY(1); /* 默认展开 */
     transform-origin: top;
     margin-left: 10px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  .toc-container::-webkit-scrollbar {
+    display: none; /* Chrome / Safari / Edge */
   }
   
   .toc-toggle {
