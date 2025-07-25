@@ -162,7 +162,7 @@
         ">Welcome to M310ct&#39;s blog !!!</h1>
         <hr class="w-[85%] border-t-2 border-line-color border-dashed">
         
-        <p class="text-hacker-color2 md:mt-40 mt-20 md:text-2xl text-lg text-wrap font-dos w-[70%] select-none">这是一个专注于网络安全与编程的博客，记录我的学习与探索。</br> <a target="_blank" rel="noopener" href="http://hv6ztbgzmcx326s7tjunwevw43pcguhggtw5g2vtughxnopyacycciqd.onion/">hv6ztbgzmcx326s7tjunwevw43pcguhggtw5g2vtughxnopyacycciqd.onion</a></p>
+        <p class="text-hacker-color2 md:mt-40 mt-20 md:text-2xl text-lg text-wrap font-dos w-[70%] select-none">这是一个专注于网络安全与编程的博客，记录我的学习与探索</p>
 
         <!-- 下拉按钮 -->
         <svg id="down-btn" class="icon w-16 h-16 absolute top-[75%] hover:-translate-y-1 transition-all cursor-pointer" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#bbbbbb">
@@ -389,16 +389,27 @@
 
   <!-- 页脚 -->
   <footer class="bg-black text-gray-400 py-4">
-    <div class="container mx-auto text-center">
-      <p>© <span id="current-year"></span>  m310ct 
-        <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexploit">Hexpolit</a></p>
-    </div>
-  </footer>
-  
-  <script> 
-    document.getElementById("current-year").textContent = new Date().getFullYear();
-  </script>
-  
+ <div class="container mx-auto text-center">
+  <p>© <span id="current-year"></span>  m310ct 
+    <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexploit">Hexpolit</a></p>
+ </div>
+</footer>
+
+<script> 
+ document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+<script>
+window.MathJax = {
+tex: {
+  inlineMath: [['$', '$'], ['\\(', '\\)']]  // 启用 $...$ 和 \( ... \)
+},
+svg: {
+  fontCache: 'global'
+}
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
 
 </body>
 <script src="./js/scroll.js"></script>
