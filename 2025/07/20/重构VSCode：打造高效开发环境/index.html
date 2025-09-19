@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    p{
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+        font-size: 1.1rem;
+    }
+    figure{
+        margin: 0 !important;
+    }
+    pre{
+        padding: 0 !important;
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    td{
+        padding: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    h1,h2,h3,h4,h5,h6{
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+    }
+    @media (min-width: 1024px) {
+        #middle-box{
+            min-width: 56rem;
+        }
+    
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M310ct&#39;s blog - 重构VSCode：打造高效开发环境</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/toc.css">
+    
+<header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
+    <div class="container mx-auto flex items-center justify-between space-x-8">
+    
+      <h1 class="text-2xl font-bold ml-[100px] md:ml-0 animate-pulse text-hacker-color1 md:mr-[20%]">
+        <a href="/" class="hover:text-white transition-colors select-none">
+          M310ct&#39;s blog
+        </a>
+      </h1>
+  
+    <!-- 大屏幕 -->
+      <nav class="hidden md:block">
+        <ul class="flex space-x-6">
+          
+            <li>
+              <a href="/" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Home
+              </a>
+            </li>
+          
+            <li>
+              <a href="/archives" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Archives
+              </a>
+            </li>
+          
+            <li>
+              <a href="/categories" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Categories
+              </a>
+            </li>
+          
+            <li>
+              <a href="/tags" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                Tags
+              </a>
+            </li>
+          
+            <li>
+              <a href="/about" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                About
+              </a>
+            </li>
+          
+            <li>
+              <a href="/rss.xml" class="select-none text-lg hover:text-hacker-color1 transition-all hover:underline decoration-wavy duration-300 text-hacker-color3">
+                RSS
+              </a>
+            </li>
+          
+        </ul>
+      </nav>
+  
+      <!-- 小屏幕 -->
+      <button id="menu-toggle" class="block md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  
+    <!-- 折叠菜单 -->
+    <nav id="mobile-menu" class="hidden bg-black">
+      <ul class="space-y-2 py-4 px-6">
+        
+          <li>
+            <a href="/" class="block text-white hover:text-hacker-color1 transition-colors">
+              Home
+            </a>
+          </li>
+        
+          <li>
+            <a href="/archives" class="block text-white hover:text-hacker-color1 transition-colors">
+              Archives
+            </a>
+          </li>
+        
+          <li>
+            <a href="/categories" class="block text-white hover:text-hacker-color1 transition-colors">
+              Categories
+            </a>
+          </li>
+        
+          <li>
+            <a href="/tags" class="block text-white hover:text-hacker-color1 transition-colors">
+              Tags
+            </a>
+          </li>
+        
+          <li>
+            <a href="/about" class="block text-white hover:text-hacker-color1 transition-colors">
+              About
+            </a>
+          </li>
+        
+          <li>
+            <a href="/rss.xml" class="block text-white hover:text-hacker-color1 transition-colors">
+              RSS
+            </a>
+          </li>
+        
+      </ul>
+    </nav>
+  
+    <!-- RSS Link -->
+    <link rel="alternate" type="application/rss+xml" title=" RSS" href="/rss.xml" />
+  </header>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/search.js"></script>
+  <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        } else {
+        mobileMenu.classList.add("hidden");
+        }
+    });
+    });
+
+  </script>
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body class="bg-black text-hacker-color3 container mx-auto">
+    <!-- 文章标题 -->
+    <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">重构VSCode：打造高效开发环境</h1>
+
+    <!-- 发布时间 -->
+    <p class="text-hacker-color3 text-center text-sm mb-4">
+        2025-07-20
+    </p>
+
+    <!-- 文章内容 -->
+    <div id="article-content" class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight" style="display: flex;">
+        <div id="middle-box">
+            <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>VSCode是由微软开发的一款开源代码编辑器。具有跨平台、可拓展等优势。相对于Jetbrains家族的IDEs来说更为轻量，并且一个配置得当的VSCode可以进行全栈开发。</p>
+<p>本文旨在记录VSCode配置的过程。</p>
+<p>文章为了方便， 将直接给出 <code>settings.json</code> 的配置代码而不是在设置中进行手动点击。</p>
+<p>所有插件都可以在插件商店中搜索，我也会给出每个插件的网址。</p>
+<h3 id="打开settings-json-的方法"><a href="#打开settings-json-的方法" class="headerlink" title="打开settings.json 的方法"></a>打开<code>settings.json</code> 的方法</h3><p><code>CTRL + ,</code> 打开设置界面。在右上角有一个“打开设置（json）”的图标，单机即可打开。</p>
+<p>所有的配置文件按照 <code>json</code> 格式编写，全部写在一对大括号内，文中出现的代码不包括大括号。</p>
+<h2 id="1-基础设置"><a href="#1-基础设置" class="headerlink" title="1.基础设置"></a>1.基础设置</h2><h3 id="添加中文插件"><a href="#添加中文插件" class="headerlink" title="添加中文插件"></a>添加中文插件</h3><p><code>CTRL + Shift + x</code> 打开插件，搜索chinese，选择中文简体安装，选择右下角弹框中的<code>Change Language and Restart</code> 或手动重启。</p>
+<p>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans">Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code - Visual Studio Marketplace</a></p>
+<h3 id="设置字体大小于样式"><a href="#设置字体大小于样式" class="headerlink" title="设置字体大小于样式"></a>设置字体大小于样式</h3><p>由于我的显示器较大所以我设置的字体比较大，可以更具自己的习惯进行修改。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;editor.fontSize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">25</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//设置字体大小</span><br><span class="hljs-attr">&quot;editor.fontFamily&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Monaspace Radon Frozen, monospace&quot;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+<p>Monaspace字体下载连接：<a target="_blank" rel="noopener" href="https://monaspace.githubnext.com/">Monaspace</a></p>
+<h3 id="设置光标样式"><a href="#设置光标样式" class="headerlink" title="设置光标样式"></a>设置光标样式</h3><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;editor.cursorBlinking&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;phase&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;editor.cursorSmoothCaretAnimation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span><span class="hljs-comment">//开启光标平滑动画</span><br><span class="hljs-attr">&quot;editor.cursorStyle&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;line&quot;</span><span class="hljs-punctuation">,</span> <br></code></pre></td></tr></table></figure>
+
+<h3 id="设置主题"><a href="#设置主题" class="headerlink" title="设置主题"></a>设置主题</h3><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;workbench.colorTheme&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Noir Vira&quot;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+<p>NoirVira是一款黑色风格的主题，我十分推荐，因为是我自己开发的。</p>
+<p>主题地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=NoirVira.noir-vira">Noir Vira - Visual Studio Marketplace</a></p>
+<h3 id="控制台设置"><a href="#控制台设置" class="headerlink" title="控制台设置"></a>控制台设置</h3><figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;terminal.integrated.fontSize&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">20</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//控制台字体</span><br><span class="hljs-attr">&quot;terminal.integrated.cursorBlinking&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span> <span class="hljs-comment">//开启控制台光标闪烁</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="折行设置"><a href="#折行设置" class="headerlink" title="折行设置"></a>折行设置</h3><p>当代码的某一行过长我们希望能够自动折叠这行代码。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;editor.wordWrap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;on&quot;</span><span class="hljs-punctuation">,</span>              <span class="hljs-comment">// 打开自动换行</span><br><span class="hljs-attr">&quot;editor.wordWrapColumn&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">80</span><span class="hljs-punctuation">,</span>          <span class="hljs-comment">// 控制在哪一列自动换行（可选）</span><br><span class="hljs-attr">&quot;editor.wrappingIndent&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;same&quot;</span>       <span class="hljs-comment">// 换行后保持缩进</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="2-插件系统搭建"><a href="#2-插件系统搭建" class="headerlink" title="2.插件系统搭建"></a>2.插件系统搭建</h2><h3 id="前端插件"><a href="#前端插件" class="headerlink" title="前端插件"></a>前端插件</h3><ul>
+<li><p><strong>Auto Rename Tag</strong>：修改 HTML 标签时自动重命名闭合标签</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag">Auto Rename Tag - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>CSS Peek</strong>：可点击 CSS class 直接跳转定义</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek">CSS Peek - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Live Server</strong>：动态预览前端页面</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">Live Server - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Console Ninja</strong>：在VSCode中显示console.log信息</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=WallabyJs.console-ninja">Console Ninja - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="代码增强插件"><a href="#代码增强插件" class="headerlink" title="代码增强插件"></a>代码增强插件</h3><ul>
+<li><p><strong>Prettier</strong>：格式化代码（快捷键<code>Shift + ALT + f</code>）</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Code Spell Checker</strong>：自动检查拼写错误</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker">Code Spell Checker - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Markdown Preview Enhanced</strong>：markdown预览插件</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enhanced - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>TODO Highlight</strong>：高亮TODO</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight">TODO Highlight - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Code Runner</strong>：在VSCode中直接运行代码</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner">Code Runner - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="编程语言插件"><a href="#编程语言插件" class="headerlink" title="编程语言插件"></a>编程语言插件</h3><ul>
+<li><p><strong>Python</strong>: <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python - Visual Studio Marketplace</a></p>
+</li>
+<li><p><strong>JavaScript&#x2F;TypeScript</strong>：内置支持。</p>
+</li>
+<li><p><strong>C&#x2F;C++</strong>：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack">C&#x2F;C++ Extension Pack - Visual Studio Marketplace</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C&#x2F;C++ - Visual Studio Marketplace</a></p>
+</li>
+</ul>
+</li>
+<li><p><strong>Go</strong>: <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=golang.Go">Go - Visual Studio Marketplace</a></p>
+</li>
+<li><p><strong>PHP</strong>: <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=DEVSENSE.phptools-vscode">PHP - Visual Studio Marketplace</a></p>
+</li>
+</ul>
+<h3 id="美化插件"><a href="#美化插件" class="headerlink" title="美化插件"></a>美化插件</h3><ul>
+<li><p><strong>indent-rainbow</strong>：然缩进具有颜色</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">indent-rainbow - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Material Icon Theme</strong>：好看的文件图标</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme">Material Icon Theme - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Trailing Spaces</strong>：突出尾部空格</p>
+<ul>
+<li>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces">Trailing Spaces - Visual Studio Marketplace</a></li>
+</ul>
+</li>
+<li><p><strong>Path Intellisense</strong>：自动补全文件名</p>
+<ul>
+<li><p>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense">Path Intellisense - Visual Studio Marketplace</a></p>
+</li>
+<li><p>替换JS和TS中的路径补全，在<code>settings.js</code>中写入：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;typescript.suggest.paths&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;javascript.suggest.paths&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="动画插件"><a href="#动画插件" class="headerlink" title="动画插件"></a>动画插件</h3><p>安装<strong>VSCode Animations</strong>插件，根据右下角提示一直点击确认就可以获得一个丝滑的VSCode。</p>
+<p><strong>注意：如果重启也不能让动画设置生效请可尝试重启电脑。</strong></p>
+<p>如果想给鼠标也添加动画，在settings.js中添加：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;animations.CursorAnimation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br></code></pre></td></tr></table></figure>
+
+<h2 id="3-远程开发于容器开发"><a href="#3-远程开发于容器开发" class="headerlink" title="3.远程开发于容器开发"></a>3.远程开发于容器开发</h2><p>如果你在服务器（比如 Ubuntu Server）上开发，或者在 Docker 容器里跑项目，VSCode 的远程功能非常方便。</p>
+<h3 id="远程-SSH-连接服务器"><a href="#远程-SSH-连接服务器" class="headerlink" title="远程 SSH 连接服务器"></a>远程 SSH 连接服务器</h3><p>安装插件：<code>Remote - SSH</code><br>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">Remote - SSH</a></p>
+<p>按下 <code>F1</code> → 输入并选择 <code>Remote-SSH: Connect to Host...</code> → 添加主机。</p>
+<h3 id="使用-Docker-容器开发"><a href="#使用-Docker-容器开发" class="headerlink" title="使用 Docker 容器开发"></a>使用 Docker 容器开发</h3><p>安装插件：<code>Dev Containers</code><br>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers</a></p>
+<p>按下 <code>F1</code> → 输入并选择 <code>Dev Containers: Attach to Running Container...</code> → 选择容器即可进入。</p>
+<h2 id="4-Git-工作流"><a href="#4-Git-工作流" class="headerlink" title="4.Git 工作流"></a>4.Git 工作流</h2><p>VSCode 原生就支持 Git，只要你本地已经安装了 <code>git</code>，就可以直接使用。</p>
+<h3 id="初始化-Git-仓库"><a href="#初始化-Git-仓库" class="headerlink" title="初始化 Git 仓库"></a>初始化 Git 仓库</h3><p>点击左侧菜单的 <code>源代码管理（分支图标）</code> → 点击 <code>初始化仓库</code>。</p>
+<p>或者直接打开终端输入：</p>
+<p>bash</p>
+<p>复制编辑</p>
+<p><code>git init</code></p>
+<h3 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h3><ul>
+<li><p><strong>提交代码</strong><br>修改完后点击左侧 Git 图标，填写提交信息，点击✅就能提交。</p>
+</li>
+<li><p><strong>查看修改</strong><br>文件左边会显示绿色&#x2F;红色标记，点进去可以看到修改的内容。</p>
+</li>
+<li><p><strong>推送到远程仓库</strong></p>
+</li>
+</ul>
+<p>先绑定远程仓库地址：</p>
+<p>bash</p>
+<p>复制编辑</p>
+<p><code>git remote add origin git@github.com:你的用户名/你的项目.git</code></p>
+<p>然后执行：</p>
+<p>bash</p>
+<p>复制编辑</p>
+<p><code>git push -u origin main</code></p>
+<h3 id="Git-插件推荐"><a href="#Git-插件推荐" class="headerlink" title="Git 插件推荐"></a>Git 插件推荐</h3><ul>
+<li><strong>GitLens</strong>：更详细的提交记录、作者信息查看<br>插件地址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens - Visual Studio Marketplace</a></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>VSCode 是一款高度可定制的编辑器，一个配置得当的 VSCode 足以覆盖大多数开发需求。</p>
+<p>本文从<strong>基础设置</strong>、<strong>插件体系</strong>、<strong>远程开发</strong>、<strong>Git 集成</strong>等方面，梳理了完整的定制过程，重点突出<strong>颜值 ✚ 效率 ✚ 多语言适配</strong>。</p>
+<p>你可以按需取用，也可以在此基础上打造属于你自己的开发环境。</p>
+<blockquote>
+<p>工具只是手段，真正提升效率的，是你对工具的理解与掌控。</p>
+</blockquote>
+
+        </div>
+        
+            <div class="post-container">
+            <aside class="toc-container">
+                <button class="toc-toggle">文章目录</button>
+                <nav class="toc" id="toc"></nav>
+            </aside>
+        </div>
+        
+    </div>
+
+
+    <!-- 返回主页链接 -->
+    <div class="text-center my-8">
+        <a href="/" class="text-hacker-color1 underline hover:text-hacker-color2">← Back to Home</a>
+    </div>
+
+      
+      <script src="/js/toc.js"></script>  <!-- 引入 TOC 逻辑 -->
+      
+      
+
+    <footer class="bg-black text-gray-400 py-4">
+ <div class="container mx-auto text-center">
+  <p>© <span id="current-year"></span>  m310ct 
+    <br> Powered by <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & <a class="hover:text-white duration-150 hover:underline decoration-slice" target="_blank" rel="noopener" href="https://github.com/m310ct/hexo-theme-hexploit">Hexpolit</a></p>
+ </div>
+</footer>
+
+<script> 
+ document.getElementById("current-year").textContent = new Date().getFullYear();
+</script>
+<script>
+window.MathJax = {
+tex: {
+  inlineMath: [['$', '$'], ['\\(', '\\)']]  // 启用 $...$ 和 \( ... \)
+},
+svg: {
+  fontCache: 'global'
+}
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+
+
+
+</body>
+</html>

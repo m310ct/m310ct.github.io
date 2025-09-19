@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF‑8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>404 Not Found</title>
+    <style>
+        html {
+            background: black;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            height: 100%;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .message {
+            font-size: 5rem !important;
+            font-weight: bolder;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            color: #0f0;
+            font-family: monospace;
+            font-size: 2rem;
+            transform: translateY(-50%);
+        }
+    </style>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss.xml" title="M310ct's blog" type="application/atom+xml">
+</head>
+
+<body>
+    <canvas id="Matrix"></canvas>
+    <div class="message">404 Not Found</div>
+    <script>
+        const canvas = document.getElementById("Matrix");
+        const ctx = canvas.getContext("2d");
+        const katakana = "M310CT";
+        const latin = "m310ct";
+        const nums = "310310310310310";
+        const alphabet = katakana + latin + nums;
+        let fontSize = 16;
+        let columns;
+        let rainDrops = [];
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            fontSize = 16;
+            columns = Math.floor(canvas.width / fontSize);
+            rainDrops = Array(columns).fill(1);
+        }
+        window.addEventListener("resize", init);
+        init();
+        function draw() {
+            ctx.fillStyle = "rgba(0,0,0,0.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "#0F0";
+            ctx.font = fontSize + "px monospace";
+            for (let i = 0; i < columns; i++) {
+                const text = alphabet.charAt(
+                    Math.floor(Math.random() * alphabet.length)
+                );
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975)
+                    rainDrops[i] = 0;
+                rainDrops[i]++;
+            }
+        }
+        setInterval(draw, 30);
+    </script>
+</body>
+
+</html>
