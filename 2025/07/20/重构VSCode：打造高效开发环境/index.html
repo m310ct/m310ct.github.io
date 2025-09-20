@@ -1,43 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    p{
-        margin-top: 0 !important;
-        margin-bottom: 1rem !important;
-        font-size: 1.1rem;
+  <style>
+    p {
+      margin-top: 0 !important;
+      margin-bottom: 1rem !important;
+      font-size: 1.1rem;
     }
-    figure{
-        margin: 0 !important;
+    figure {
+      margin: 0 !important;
     }
-    pre{
-        padding: 0 !important;
-        margin-top: 0 !important;
-        margin-bottom: 1rem !important;
+    pre {
+      padding: 0 !important;
+      margin-top: 0 !important;
+      margin-bottom: 1rem !important;
     }
 
-    td{
-        padding: 0 !important;
-        margin-bottom: 1rem !important;
+    td {
+      padding: 0 !important;
+      margin-bottom: 1rem !important;
     }
-    h1,h2,h3,h4,h5,h6{
-        margin-top: 0 !important;
-        margin-bottom: 1rem !important;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 0 !important;
+      margin-bottom: 1rem !important;
     }
     @media (min-width: 1024px) {
-        #middle-box{
-            min-width: 56rem;
+      #middle-box {
+        min-width: 56rem;
+      }
+      h1.page-title {
+        text-align: center;
+        width: 100%;
+      }
+      #article-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; /* 保证整体居中 */
+        gap: 2rem;
+        overflow-x: hidden; /* 防止水平滚动条 */
+      }
+
+      #middle-box {
+        flex: 1;
+        min-width: 0; /* 防止被撑开 */
+      }
+
+      /* 小屏幕改为上下排列 */
+      @media (max-width: 1024px) {
+        #article-content {
+          display: block;
         }
-    
+        .toc-container {
+          width: 100%;
+          margin: 1rem 0 0 0;
+          position: relative;
+        }
+      }
     }
-</style>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>M310ct&#39;s blog - 重构VSCode：打造高效开发环境</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/tailwind.css">
-    <link rel="stylesheet" href="/css/highlight.css">
-    <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/tailwind.css" />
+    <link rel="stylesheet" href="/css/highlight.css" />
+    <link rel="stylesheet" href="/css/toc.css" />
     
 <header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
     <div class="container mx-auto flex items-center justify-between space-x-8">
@@ -165,20 +197,27 @@
   </script>
 
 
-<meta name="generator" content="Hexo 7.3.0"></head>
-<body class="bg-black text-hacker-color3 container mx-auto">
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body class="bg-black text-hacker-color3 container mx-auto">
     <!-- 文章标题 -->
-    <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">重构VSCode：打造高效开发环境</h1>
+    <h1
+      class="page-title text-5xl text-hacker-color1 font-bold font-dos my-6 text-center"
+    >
+      重构VSCode：打造高效开发环境
+    </h1>
 
     <!-- 发布时间 -->
     <p class="text-hacker-color3 text-center text-sm mb-4">
-        2025-07-20
+      2025-07-20
     </p>
 
     <!-- 文章内容 -->
-    <div id="article-content" class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight" style="display: flex;">
-        <div id="middle-box">
-            <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>VSCode是由微软开发的一款开源代码编辑器。具有跨平台、可拓展等优势。相对于Jetbrains家族的IDEs来说更为轻量，并且一个配置得当的VSCode可以进行全栈开发。</p>
+    <div
+      id="article-content"
+      class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight"
+      style="display: flex"
+    >
+      <div id="middle-box"><h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>VSCode是由微软开发的一款开源代码编辑器。具有跨平台、可拓展等优势。相对于Jetbrains家族的IDEs来说更为轻量，并且一个配置得当的VSCode可以进行全栈开发。</p>
 <p>本文旨在记录VSCode配置的过程。</p>
 <p>文章为了方便， 将直接给出 <code>settings.json</code> 的配置代码而不是在设置中进行手动点击。</p>
 <p>所有插件都可以在插件商店中搜索，我也会给出每个插件的网址。</p>
@@ -334,28 +373,26 @@
 <blockquote>
 <p>工具只是手段，真正提升效率的，是你对工具的理解与掌控。</p>
 </blockquote>
-
-        </div>
-        
-            <div class="post-container">
-            <aside class="toc-container">
-                <button class="toc-toggle">文章目录</button>
-                <nav class="toc" id="toc"></nav>
-            </aside>
-        </div>
-        
+</div>
+      
+      <div class="post-container">
+        <aside class="toc-container">
+          <button class="toc-toggle">文章目录</button>
+          <nav class="toc" id="toc"></nav>
+        </aside>
+      </div>
+      
     </div>
-
 
     <!-- 返回主页链接 -->
     <div class="text-center my-8">
-        <a href="/" class="text-hacker-color1 underline hover:text-hacker-color2">← Back to Home</a>
+      <a href="/" class="text-hacker-color1 underline hover:text-hacker-color2"
+        >← Back to Home</a
+      >
     </div>
 
-      
-      <script src="/js/toc.js"></script>  <!-- 引入 TOC 逻辑 -->
-      
-      
+    <script src="/js/toc.js"></script>
+    <!-- 引入 TOC 逻辑 -->
 
     <footer class="bg-black text-gray-400 py-4">
  <div class="container mx-auto text-center">
@@ -380,6 +417,5 @@ svg: {
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
 
-
-</body>
+  </body>
 </html>
