@@ -91,3 +91,7 @@ pre{
   color: #fff;
   font-weight: bolder;
 }
+.hljs {
+  white-space: pre-wrap;   /* 自动换行 */
+  word-wrap: break-word;   /* 允许长单词字符串断行 */
+}
