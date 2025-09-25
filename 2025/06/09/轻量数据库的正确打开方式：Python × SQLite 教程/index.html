@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="/css/highlight.css">
     <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/css/markdown.css">
     
 <header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
     <div class="container mx-auto flex items-center justify-between space-x-8">
@@ -192,110 +193,143 @@
     <!-- 文章内容 -->
     <div id="article-content" class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight" style="display: flex;">
         <div id="middle-box">
-            <p>&nbsp;</p>
-<h2 id="0-为什么选择-Python-SQLite"><a href="#0-为什么选择-Python-SQLite" class="headerlink" title="0.为什么选择 Python + SQLite?"></a>0.为什么选择 Python + SQLite?</h2><p>在开发一些轻量级的项目时，相比起安装 MySQL、PostgreSQL 等大型数据库系统，SQLite 提供了一个“零配置、文件级、嵌入式”的解决方案 —— 只需要一个 <code>.db</code> 文件就能开始操作数据库。</p>
+            <p> </p>
+<h2 id="0-为什么选择-Python-SQLite">0.为什么选择 Python + SQLite?</h2>
+<p>在开发一些轻量级的项目时，相比起安装 MySQL、PostgreSQL 等大型数据库系统，SQLite 提供了一个“零配置、文件级、嵌入式”的解决方案 —— 只需要一个 <code>.db</code> 文件就能开始操作数据库。</p>
 <p>而在Python内置的<code>sqlite3</code> 模块让操作sqlite变得非常简单，无需额外以来就能执行SQL语句，管理表结构。</p>
 <p>接下来我们就一步一步通过实际代码来看看，如何用 Python 玩转 SQLite。</p>
-<h2 id="1-连接数据库与创建数据库文件"><a href="#1-连接数据库与创建数据库文件" class="headerlink" title="1.连接数据库与创建数据库文件"></a>1.连接数据库与创建数据库文件</h2><h3 id="文件数据库"><a href="#文件数据库" class="headerlink" title="文件数据库"></a>文件数据库</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sqlite3<br>conn = sqlite3.connect(<span class="hljs-string">&quot;data.db&quot;</span>)<br></code></pre></td></tr></table></figure>
-
+<h2 id="1-连接数据库与创建数据库文件">1.连接数据库与创建数据库文件</h2>
+<h3 id="文件数据库">文件数据库</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sqlite3<br>conn = sqlite3.connect(<span class="hljs-string">&quot;data.db&quot;</span>)<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p><code>connect()</code>：本地创建或者打开数据库文件，参数为数据库文件路径</p>
+<li>
+<p><code>connect()</code>：本地创建或者打开数据库文件，参数为数据库文件路径</p>
 </li>
-<li><p><code>conn</code>：是<strong>连接对象</strong>，可以理解为数据库的会话窗口，通过conn可以：执行SQL，提交事务，回滚，关闭连接</p>
+<li>
+<p><code>conn</code>：是<strong>连接对象</strong>，可以理解为数据库的会话窗口，通过conn可以：执行SQL，提交事务，回滚，关闭连接</p>
 </li>
 </ul>
-<h2 id="内存数据库"><a href="#内存数据库" class="headerlink" title="内存数据库"></a>内存数据库</h2><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sqlite3<br>conn = sqlite3.connect(<span class="hljs-string">&quot;:memory:&quot;</span>)<br></code></pre></td></tr></table></figure>
-
+<h2 id="内存数据库">内存数据库</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sqlite3<br>conn = sqlite3.connect(<span class="hljs-string">&quot;:memory:&quot;</span>)<br></code></pre></td></tr></table></figure>
 <p>当<code>connect()</code>的参数为<code>:memory:</code>，sqlite将不会创建文件而是将文件存储在内存中，程序退出后数据消失，因为没有IO操作所以速度更快，一般用于程序测试时</p>
-<h2 id="2-执行SQL命令"><a href="#2-执行SQL命令" class="headerlink" title="2.执行SQL命令"></a>2.执行SQL命令</h2><h3 id="SQL-语句提交函数"><a href="#SQL-语句提交函数" class="headerlink" title="SQL 语句提交函数"></a>SQL 语句提交函数</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor = conn.cursor()<br>cursor.execute(<span class="hljs-string">&quot;INSERT INTO users (name) VALUES (?)&quot;</span>, (<span class="hljs-string">&quot;Bob&quot;</span>,))<br>conn.commit()<br></code></pre></td></tr></table></figure>
-
+<h2 id="2-执行SQL命令">2.执行SQL命令</h2>
+<h3 id="SQL-语句提交函数">SQL 语句提交函数</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor = conn.cursor()<br>cursor.execute(<span class="hljs-string">&quot;INSERT INTO users (name) VALUES (?)&quot;</span>, (<span class="hljs-string">&quot;Bob&quot;</span>,))<br>conn.commit()<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p><code>conn.cursor()</code>：返回一个<em>游标对象</em>，cursor扮演者一个执行SQL命令+获取查询结果的中间人角色</p>
+<li>
+<p><code>conn.cursor()</code>：返回一个<em>游标对象</em>，cursor扮演者一个执行SQL命令+获取查询结果的中间人角色</p>
 </li>
-<li><p><code>cursor.execute()</code>：提交SQL命令</p>
+<li>
+<p><code>cursor.execute()</code>：提交SQL命令</p>
 </li>
-<li><p><code>conn.commit()</code>：<strong>提交事务</strong>，把你对数据库的所有改动<strong>永久写入数据库文件</strong></p>
+<li>
+<p><code>conn.commit()</code>：<strong>提交事务</strong>，把你对数据库的所有改动<strong>永久写入数据库文件</strong></p>
 </li>
 </ul>
-<h3 id="SQL预处理"><a href="#SQL预处理" class="headerlink" title="SQL预处理"></a>SQL预处理</h3><h4 id="问号占位符"><a href="#问号占位符" class="headerlink" title="问号占位符"></a>问号占位符</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users WHERE name = ?&quot;</span>, (<span class="hljs-string">&quot;Alice&quot;</span>,))<br></code></pre></td></tr></table></figure>
-
+<h3 id="SQL预处理">SQL预处理</h3>
+<h4 id="问号占位符">问号占位符</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users WHERE name = ?&quot;</span>, (<span class="hljs-string">&quot;Alice&quot;</span>,))<br></code></pre></td></tr></table></figure>
 <ul>
 <li>通过?的方式占位，参数必须为元组或者列表，具有自动转义和类型处理机制，有效防御SQLi</li>
 </ul>
-<h4 id="命名占位符"><a href="#命名占位符" class="headerlink" title="命名占位符"></a>命名占位符</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users WHERE name = :name&quot;</span>, &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Alice&quot;</span>&#125;)<br></code></pre></td></tr></table></figure>
-
+<h4 id="命名占位符">命名占位符</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users WHERE name = :name&quot;</span>, &#123;<span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;Alice&quot;</span>&#125;)<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p>命名占位符有更高的可读性</p>
+<li>
+<p>命名占位符有更高的可读性</p>
 </li>
-<li><p>使用 <code>:参数名</code> 的方式</p>
+<li>
+<p>使用 <code>:参数名</code> 的方式</p>
 </li>
-<li><p>参数用字典传入</p>
+<li>
+<p>参数用字典传入</p>
 </li>
-<li><p>适合参数多、复杂时使用</p>
+<li>
+<p>适合参数多、复杂时使用</p>
 </li>
 </ul>
-<h3 id="非预期处理方式（风险写法❌）"><a href="#非预期处理方式（风险写法❌）" class="headerlink" title="非预期处理方式（风险写法❌）"></a>非预期处理方式（风险写法❌）</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">name = <span class="hljs-string">&quot;Alice&quot;</span><br>cursor.execute(<span class="hljs-string">f&quot;SELECT * FROM users WHERE name = &#x27;<span class="hljs-subst">&#123;name&#125;</span>&#x27;&quot;</span>)<br></code></pre></td></tr></table></figure>
-
+<h3 id="非预期处理方式（风险写法❌）">非预期处理方式（风险写法❌）</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">name = <span class="hljs-string">&quot;Alice&quot;</span><br>cursor.execute(<span class="hljs-string">f&quot;SELECT * FROM users WHERE name = &#x27;<span class="hljs-subst">&#123;name&#125;</span>&#x27;&quot;</span>)<br></code></pre></td></tr></table></figure>
 <p>字符串拼接的写法会导致SQL注入漏洞</p>
-<h3 id="3-批量执行：executemany-的使用"><a href="#3-批量执行：executemany-的使用" class="headerlink" title="3.批量执行：executemany 的使用"></a>3.批量执行：executemany 的使用</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">data = [(<span class="hljs-string">&quot;Tom&quot;</span>,), (<span class="hljs-string">&quot;Jerry&quot;</span>,), (<span class="hljs-string">&quot;Spike&quot;</span>,)]<br>cursor.executemany(<span class="hljs-string">&quot;INSERT INTO users (name) VALUES (?)&quot;</span>, data)<br>conn.commit()<br></code></pre></td></tr></table></figure>
-
+<h3 id="3-批量执行：executemany-的使用">3.批量执行：executemany 的使用</h3>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">data = [(<span class="hljs-string">&quot;Tom&quot;</span>,), (<span class="hljs-string">&quot;Jerry&quot;</span>,), (<span class="hljs-string">&quot;Spike&quot;</span>,)]<br>cursor.executemany(<span class="hljs-string">&quot;INSERT INTO users (name) VALUES (?)&quot;</span>, data)<br>conn.commit()<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p><code>executemany()</code> 用于一次性插入多行数据</p>
+<li>
+<p><code>executemany()</code> 用于一次性插入多行数据</p>
 </li>
-<li><p>避免使用 <code>for</code> 循环+多次 <code>execute()</code>，更高效，更优雅</p>
+<li>
+<p>避免使用 <code>for</code> 循环+多次 <code>execute()</code>，更高效，更优雅</p>
 </li>
 </ul>
-<h3 id="4-获取查询结果"><a href="#4-获取查询结果" class="headerlink" title="4. 获取查询结果"></a>4. 获取查询结果</h3><h4 id="返回结果的三种函数"><a href="#返回结果的三种函数" class="headerlink" title="返回结果的三种函数"></a>返回结果的三种函数</h4><figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users&quot;</span>)<br>rows = cursor.fetchall()<br>rows = cursor.fetchmany(n)<br>rows = cursor.fetchall()<br>conn.close()<br></code></pre></td></tr></table></figure>
-
+<h3 id="4-获取查询结果">4. 获取查询结果</h3>
+<h4 id="返回结果的三种函数">返回结果的三种函数</h4>
+<figure class="highlight py"><table><tr><td class="code"><pre><code class="hljs py">cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users&quot;</span>)<br>rows = cursor.fetchall()<br>rows = cursor.fetchmany(n)<br>rows = cursor.fetchall()<br>conn.close()<br></code></pre></td></tr></table></figure>
 <ul>
-<li><p><code>fetchone()</code>：只获取一行</p>
+<li>
+<p><code>fetchone()</code>：只获取一行</p>
 </li>
-<li><p><code>fetchmany(n)</code>：最多获取 n 行</p>
+<li>
+<p><code>fetchmany(n)</code>：最多获取 n 行</p>
 </li>
-<li><p><code>fetchall()</code>：取所有结果，通常配合 for 使用</p>
+<li>
+<p><code>fetchall()</code>：取所有结果，通常配合 for 使用</p>
 </li>
 </ul>
-<h4 id="查询结果作为字典"><a href="#查询结果作为字典" class="headerlink" title="查询结果作为字典"></a>查询结果作为字典</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">conn.row_factory = sqlite3.Row<br>cursor = conn.cursor()<br>cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users&quot;</span>)<br>row = cursor.fetchone()<br><span class="hljs-built_in">print</span>(row[<span class="hljs-string">&quot;name&quot;</span>])  <span class="hljs-comment"># 像访问字典一样取字段值</span><br></code></pre></td></tr></table></figure>
-
+<h4 id="查询结果作为字典">查询结果作为字典</h4>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">conn.row_factory = sqlite3.Row<br>cursor = conn.cursor()<br>cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users&quot;</span>)<br>row = cursor.fetchone()<br><span class="hljs-built_in">print</span>(row[<span class="hljs-string">&quot;name&quot;</span>])  <span class="hljs-comment"># 像访问字典一样取字段值</span><br></code></pre></td></tr></table></figure>
 <p>在默认情况下，SQLite 查询返回的是<strong>元组形式的结果</strong></p>
 <p>虽然能用，但你必须记得字段的顺序（<code>row[1]</code> 是 <code>name</code>），<strong>代码可读性和健壮性都不高</strong>。</p>
 <p>设置<code>conn.row_factory = sqlite3.Row</code> 之后再执行查询时，返回的每一行就变成了一个<strong>可以通过字段名访问的对象</strong></p>
 <p><code>sqlite3.Row</code>实际上是一个特殊对象，支持<code>row[&quot;字段名&quot;]</code></p>
-<h2 id="5-with自动管理连接"><a href="#5-with自动管理连接" class="headerlink" title="5.with自动管理连接"></a>5.with自动管理连接</h2><p><code>sqlite3.connect()</code>返回的连接对象实现了上下文管理协议（即内部有<code>__enter__</code> 和 <code>__exit__</code> 方法），因此可以用 <code>with</code> 语法自动管理连接的生命周期。</p>
+<h2 id="5-with自动管理连接">5.with自动管理连接</h2>
+<p><code>sqlite3.connect()</code>返回的连接对象实现了上下文管理协议（即内部有<code>__enter__</code> 和 <code>__exit__</code> 方法），因此可以用 <code>with</code> 语法自动管理连接的生命周期。</p>
 <p>传统写法<code>conn.close()</code>可能会导致数据未提交，文件锁未释放，内存泄漏等问题，而用<code>with</code>则可以自动调用<code>conn.commit()</code>和<code>conn.close()</code></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> sqlite3.connect(<span class="hljs-string">&quot;data.db&quot;</span>) <span class="hljs-keyword">as</span> conn:<br>    cursor = conn.cursor()<br>    cursor.execute(<span class="hljs-string">&quot;SELECT * FROM users&quot;</span>)<br>    rows = cursor.fetchall()<br></code></pre></td></tr></table></figure>
-
-<h4 id="背后的原理"><a href="#背后的原理" class="headerlink" title="背后的原理"></a>背后的原理</h4><p>Python 的 <code>with</code> 语句本质是调用对象的这两个方法：</p>
+<h4 id="背后的原理">背后的原理</h4>
+<p>Python 的 <code>with</code> 语句本质是调用对象的这两个方法：</p>
 <ul>
-<li><p><code>__enter__()</code>：进入时返回连接对象</p>
+<li>
+<p><code>__enter__()</code>：进入时返回连接对象</p>
 </li>
-<li><p><code>__exit__()</code>：退出时自动：</p>
+<li>
+<p><code>__exit__()</code>：退出时自动：</p>
 <ul>
-<li><p>提交事务（如果没有出错）</p>
+<li>
+<p>提交事务（如果没有出错）</p>
 </li>
-<li><p>或自动回滚（如果有异常）</p>
+<li>
+<p>或自动回滚（如果有异常）</p>
 </li>
-<li><p>然后关闭连接</p>
+<li>
+<p>然后关闭连接</p>
 </li>
 </ul>
 </li>
 </ul>
 <p>SQLite 的连接对象内置了这个行为。</p>
-<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h2><p>在本篇博客中，我们通过实际代码，介绍了如何用 Python 内置的 <code>sqlite3</code> 模块高效地操作 SQLite 数据库。你已经掌握了以下内容：</p>
+<h2 id="6-总结">6.总结</h2>
+<p>在本篇博客中，我们通过实际代码，介绍了如何用 Python 内置的 <code>sqlite3</code> 模块高效地操作 SQLite 数据库。你已经掌握了以下内容：</p>
 <ul>
-<li><p>使用 <code>sqlite3.connect()</code> 创建数据库连接，包括<strong>文件数据库</strong>与<strong>内存数据库</strong></p>
+<li>
+<p>使用 <code>sqlite3.connect()</code> 创建数据库连接，包括<strong>文件数据库</strong>与<strong>内存数据库</strong></p>
 </li>
-<li><p>使用 <code>conn.cursor()</code> 获取游标对象，执行 SQL 并获取查询结果</p>
+<li>
+<p>使用 <code>conn.cursor()</code> 获取游标对象，执行 SQL 并获取查询结果</p>
 </li>
-<li><p>理解了 <strong>SQL 预处理语句</strong> 的作用与安全性（<code>?</code>、<code>:name</code>）</p>
+<li>
+<p>理解了 <strong>SQL 预处理语句</strong> 的作用与安全性（<code>?</code>、<code>:name</code>）</p>
 </li>
-<li><p>批量插入数据（<code>executemany</code>）的写法</p>
+<li>
+<p>批量插入数据（<code>executemany</code>）的写法</p>
 </li>
-<li><p>多种结果读取方式（<code>fetchone()</code>、<code>fetchall()</code>、<code>row_factory</code>）</p>
+<li>
+<p>多种结果读取方式（<code>fetchone()</code>、<code>fetchall()</code>、<code>row_factory</code>）</p>
 </li>
-<li><p>使用 <code>conn.commit()</code> 提交事务，确保数据持久化</p>
+<li>
+<p>使用 <code>conn.commit()</code> 提交事务，确保数据持久化</p>
 </li>
-<li><p>利用 <code>with</code> 语法自动管理数据库连接，编写更安全的代码</p>
+<li>
+<p>利用 <code>with</code> 语法自动管理数据库连接，编写更安全的代码</p>
 </li>
 </ul>
 <p>SQLite 是轻量、无依赖、嵌入式的理想选择，而 Python 则提供了简洁优雅的操作接口。两者结合，几乎可以应付所有小型项目、自动化脚本、离线工具、甚至 Web 后端的原型开发。</p>

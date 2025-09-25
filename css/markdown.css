@@ -1,0 +1,39 @@
+/* 基础容器 */
+.admonition {
+  background: #0d0d0d;         /* 纯黑背景上稍微提亮一点 */
+  color: #cccccc;              /* 默认文字灰色 */
+  border-left: 4px solid #00ff99; /* 绿色边框，呼应代码框 */
+  padding: 0.8em 1em;
+  margin: 1.2em 0;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(0, 255, 153, 0.15); /* 轻微绿光效果 */
+}
+
+/* 标题 */
+.admonition-title {
+  font-weight: bold;
+  color: #ffffff;              /* 标题亮白色 */
+  margin-bottom: 0.5em;
+  font-size: 1.05em;
+  text-shadow: 0 0 4px rgba(0, 255, 153, 0.6); /* Hacker 风格小光晕 */
+}
+
+/* 不同类型的配色 */
+.admonition.tip {
+  border-color: #00ff99; /* 绿色 */
+}
+
+.admonition.info {
+  border-color: #00ccff; /* 蓝色 */
+  box-shadow: 0 0 8px rgba(0, 204, 255, 0.2);
+}
+
+.admonition.warning {
+  border-color: #ffcc00; /* 黄色 */
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.2);
+}
+
+.admonition.danger {
+  border-color: #ff3333; /* 红色 */
+  box-shadow: 0 0 8px rgba(255, 51, 51, 0.2);
+}

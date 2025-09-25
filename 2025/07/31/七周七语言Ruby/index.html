@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="/css/highlight.css">
     <link rel="stylesheet" href="/css/toc.css">
+    <link rel="stylesheet" href="/css/markdown.css">
     
 <header class="bg-black text-hacker-white py-4 font-dos font-extrabold">
     <div class="container mx-auto flex items-center justify-between space-x-8">
@@ -192,32 +193,46 @@
     <!-- 文章内容 -->
     <div id="article-content" class="article-entry prose prose-invert mx-auto max-w-4xl leading-relaxed highlight" style="display: flex;">
         <div id="middle-box">
-            <h2 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1 环境配置"></a>1 环境配置</h2><h3 id="1-1-windows配置"><a href="#1-1-windows配置" class="headerlink" title="1.1 windows配置"></a>1.1 windows配置</h3><ol>
-<li><p>打开<a target="_blank" rel="noopener" href="https://rubyinstaller.org/downloads/">RubyInstaller</a>，选择<code>rubyinstaller-devkit-3.4.4-2-x64.exe</code>，下载。</p>
+            <h2 id="1-环境配置">1 环境配置</h2>
+<h3 id="1-1-windows配置">1.1 windows配置</h3>
+<ol>
+<li>
+<p>打开<a target="_blank" rel="noopener" href="https://rubyinstaller.org/downloads/">RubyInstaller</a>，选择<code>rubyinstaller-devkit-3.4.4-2-x64.exe</code>，下载。</p>
 </li>
-<li><p>双击打开程序，选择Accept，点击Next。</p>
-<p> <img src="/images/ruby-1.png"></p>
+<li>
+<p>双击打开程序，选择Accept，点击Next。</p>
+<p><img src="/images/ruby-1.png" alt=""></p>
 </li>
-<li><p>点击Browse安装到自定义位置，不想改直接Install。</p>
-<p> <img src="/images/ruby-2.png"></p>
+<li>
+<p>点击Browse安装到自定义位置，不想改直接Install。</p>
+<p><img src="/images/ruby-2.png" alt=""></p>
 </li>
-<li><p>勾选<code>MSYS2</code>开发工具链，单机Next。</p>
-<p> <img src="/images/ruby-3.png"></p>
+<li>
+<p>勾选<code>MSYS2</code>开发工具链，单机Next。</p>
+<p><img src="/images/ruby-3.png" alt=""></p>
 </li>
-<li><p>下载完成后点击Finish</p>
-<p> <img src="/images/ruby-4.png"></p>
+<li>
+<p>下载完成后点击Finish</p>
+<p><img src="/images/ruby-4.png" alt=""></p>
 </li>
-<li><p>会弹出一个命令行窗口，直接按Enter键，等待执行。</p>
-<p> <img src="/images/ruby-5.png"></p>
+<li>
+<p>会弹出一个命令行窗口，直接按Enter键，等待执行。</p>
+<p><img src="/images/ruby-5.png" alt=""></p>
 </li>
-<li><p>到这一步，Enter键结束安装。<br> <img src="/images/ruby-6.png"></p>
+<li>
+<p>到这一步，Enter键结束安装。<br>
+<img src="/images/ruby-6.png" alt=""></p>
 </li>
-<li><p>打开cmd（win键+r，输入cmd），输入<code>ridk version</code>，看到类似输出则ridk安装正确。<br> <img src="/images/ruby-7.png"></p>
+<li>
+<p>打开cmd（win键+r，输入cmd），输入<code>ridk version</code>，看到类似输出则ridk安装正确。<br>
+<img src="/images/ruby-7.png" alt=""></p>
 </li>
-<li><p>cmd输入<code>irb</code>进入ruby交互式环境，到这里已经可以执行ruby代码了，推荐配合vscode编辑器使用。</p>
+<li>
+<p>cmd输入<code>irb</code>进入ruby交互式环境，到这里已经可以执行ruby代码了，推荐配合vscode编辑器使用。</p>
 </li>
 </ol>
-<h3 id="1-2-MacOS环境配置"><a href="#1-2-MacOS环境配置" class="headerlink" title="1.2 MacOS环境配置"></a>1.2 MacOS环境配置</h3><ol>
+<h3 id="1-2-MacOS环境配置">1.2 MacOS环境配置</h3>
+<ol>
 <li>打开终端，安装Homebrew：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/bin/bash -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>&quot;</span><br></code></pre></td></tr></table></figure>
@@ -249,36 +264,62 @@
 <li>安装Bundler（Ruby 包管理工具）</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem install bundler<br></code></pre></td></tr></table></figure>
-
 <ol start="6">
 <li>安装irb</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem install pry<br></code></pre></td></tr></table></figure>
-<p>终端输入<code>irb</code>进入交互环境。<br>!!! warning<br>    - 不建议直接使用系统自带的 Ruby（容易与 macOS 系统冲突）。<br>    - 推荐使用 <code>rbenv</code> 来管理 Ruby 版本，便于升级和隔离项目环境。<br>    - 安装 Ruby 时若遇到 readline 错误，可执行：<code>brew install openssl readline</code>。</p>
-<h3 id="1-3-执行代码"><a href="#1-3-执行代码" class="headerlink" title="1.3 执行代码"></a>1.3 执行代码</h3><p>ruby代码分为两种执行方式，<strong>irb执行</strong>和<strong>文件执行</strong>。<br>简单的命令使用irb，而复杂的代码建议写入一个文件，通过ruby+文件名执行，比如：<code>ruby hello.rb</code>。<br>如果vscode推荐安装Run code插件快速运行。</p>
-<h2 id="2-第一天：对象与流程控制"><a href="#2-第一天：对象与流程控制" class="headerlink" title="2.第一天：对象与流程控制"></a>2.第一天：对象与流程控制</h2><p>!!! abstract<br>    本章节通过Ruby的对象系统、判断语句和循环结构，初步感受ruby的编程方式。 </p>
-<h3 id="2-1-起步"><a href="#2-1-起步" class="headerlink" title="2.1 起步"></a>2.1 起步</h3><p>输出是学习一门编程语言最基础的一步。<br>打开irb，输入以下命令：</p>
+<p>终端输入<code>irb</code>进入交互环境。</p>
+<div class="admonition warning">
+<p class="admonition-title">warning</p>
+<ul>
+<li>不建议直接使用系统自带的 Ruby（容易与 macOS 系统冲突）。</li>
+<li>推荐使用 <code>rbenv</code> 来管理 Ruby 版本，便于升级和隔离项目环境。</li>
+<li>安装 Ruby 时若遇到 readline 错误，可执行：<code>brew install openssl readline</code>。</li>
+</ul>
+</div>
+<h3 id="1-3-执行代码">1.3 执行代码</h3>
+<p>ruby代码分为两种执行方式，<strong>irb执行</strong>和<strong>文件执行</strong>。<br>
+简单的命令使用irb，而复杂的代码建议写入一个文件，通过ruby+文件名执行，比如：<code>ruby hello.rb</code>。<br>
+如果vscode推荐安装Run code插件快速运行。</p>
+<h2 id="2-第一天：对象与流程控制">2.第一天：对象与流程控制</h2>
+<div class="admonition abstract">
+<p class="admonition-title">abstract</p>
+<p>本章节通过Ruby的对象系统、判断语句和循环结构，初步感受ruby的编程方式。</p>
+</div>
+<h3 id="2-1-起步">2.1 起步</h3>
+<p>输出是学习一门编程语言最基础的一步。<br>
+打开irb，输入以下命令：</p>
 <figure class="highlight rb"><table><tr><td class="code"><pre><code class="hljs rb">irb(main)<span class="hljs-symbol">:</span><span class="hljs-number">001</span>&gt; puts <span class="hljs-string">&quot;Hello,world&quot;</span><br><span class="hljs-title class_">Hello</span>,world<br>=&gt; nil<br>irb(main)<span class="hljs-symbol">:</span><span class="hljs-number">002</span>&gt; lang = <span class="hljs-string">&#x27;ruby&#x27;</span><br>=&gt; <span class="hljs-string">&quot;ruby&quot;</span><br>irb(main)<span class="hljs-symbol">:</span><span class="hljs-number">003</span>&gt; puts <span class="hljs-string">&quot;Hello <span class="hljs-subst">#&#123;lang&#125;</span>&quot;</span> <span class="hljs-comment">#这是模板字符串的用法</span><br><span class="hljs-title class_">Hello</span> ruby<br>=&gt; nil<br></code></pre></td></tr></table></figure>
 <p>这三条代码中，传达了很多 Ruby 的核心特性：</p>
 <ul>
 <li>puts 是ruby的输出函数。</li>
-<li>字符串用单引号 <code>&#39;&#39;</code> 或双引号 <code>&quot;&quot;</code> 包裹。</li>
+<li>字符串用单引号 <code>''</code> 或双引号 <code>&quot;&quot;</code> 包裹。</li>
 <li>变量 <strong>无需声明类型</strong>，可以直接赋值。</li>
 <li>模板字符串使用 <code>#&#123;变量&#125;</code> 的格式，仅在双引号内有效。</li>
 <li>Ruby的每条语句都有返回值。</li>
 <li><code>nil</code> 代表空值。</li>
 </ul>
-<h3 id="2-2-编程模型"><a href="#2-2-编程模型" class="headerlink" title="2.2 编程模型"></a>2.2 编程模型</h3><p>Ruby是一门纯面向对象的语言，在ruby中，一切皆对象。</p>
+<h3 id="2-2-编程模型">2.2 编程模型</h3>
+<p>Ruby是一门纯面向对象的语言，在ruby中，一切皆对象。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:0&gt;</span> <span class="hljs-number">5</span>.<span class="hljs-keyword">class</span><br>=&gt; <span class="hljs-title class_">Integer</span><br><span class="hljs-meta prompt_">irb(main):002:0&gt;</span> <span class="hljs-number">5</span>.methods<br>=&gt;<br>[<span class="hljs-symbol">:remainder</span>,<br> <span class="hljs-symbol">:abs</span>,<br> <span class="hljs-symbol">:magnitude</span>,<br> <span class="hljs-symbol">:zero?</span>,<br> <span class="hljs-symbol">:floor</span>,<br> <span class="hljs-comment"># skip</span><br> <span class="hljs-symbol">:__id__</span>]<br></code></pre></td></tr></table></figure>
-<p>在这个例子中，<br>一个对象具有个最基本的方法：</p>
+<p>在这个例子中，<br>
+一个对象具有个最基本的方法：</p>
 <ul>
 <li>obj.class：获取对象所属的类。比如 <code>5.class</code> 表示整数 <code>5</code> 的类为 <code>Integer</code>。</li>
 <li>obj.methods：获取对象所有的方法，以列表返回。</li>
 </ul>
-<p>!!! tips “”<br>    原书中 <code>4.class</code> 返回 <code>Fixnum</code>，但从 Ruby 2.4 起，<code>Fixnum</code> 和 <code>Bignum</code> 已被统一为 <code>Integer</code>。</p>
-<h3 id="2-3-判断与循环"><a href="#2-3-判断与循环" class="headerlink" title="2.3 判断与循环"></a>2.3 判断与循环</h3><h4 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h4><p>在 Ruby 中，每条语句都有返回值，所有返回值都可以归类为“真值”或“假值”。<br>只有 nil 和 false 被视为 假值，其他所有值，包括 0 和空字符串，都被视为 真值。需要注意的是，虽然 0 和其他非 false 或 nil 的值都被视为“真”，但它们并不等同于布尔值 true。<br>例如，0 &#x3D;&#x3D; true 会返回 false，因为 0 和 true 是不同的值。</p>
-<p>!!! tips “注意!”<br>    在一些其他语言中，比如 <code>python</code>、<code>C/C++</code>中，<code>0</code> 也是 <code>false</code>。而在Ruby中，<code>0</code> 是 <code>true</code>。</p>
-<h4 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h4><ul>
+<p>!!! tips “过时的内容”<br>
+原书中 <code>4.class</code> 返回 <code>Fixnum</code>，但从 Ruby 2.4 起，<code>Fixnum</code> 和 <code>Bignum</code> 已被统一为 <code>Integer</code>。<br>
+!!!</p>
+<h3 id="2-3-判断与循环">2.3 判断与循环</h3>
+<h4 id="布尔值">布尔值</h4>
+<p>在 Ruby 中，每条语句都有返回值，所有返回值都可以归类为“真值”或“假值”。<br>
+只有 nil 和 false 被视为 假值，其他所有值，包括 0 和空字符串，都被视为 真值。需要注意的是，虽然 0 和其他非 false 或 nil 的值都被视为“真”，但它们并不等同于布尔值 true。<br>
+例如，0 == true 会返回 false，因为 0 和 true 是不同的值。</p>
+<p>!!! tips “注意!”<br>
+在一些其他语言中，比如 <code>python</code>、<code>C/C++</code>中，<code>0</code> 也是 <code>false</code>。而在Ruby中，<code>0</code> 是 <code>true</code>。</p>
+<h4 id="判断语句">判断语句</h4>
+<ul>
 <li>块形式：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">if</span> condition<br>  statment<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
@@ -286,28 +327,62 @@
 <li>单行形式：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby">statement <span class="hljs-keyword">if</span> condition <br></code></pre></td></tr></table></figure>
-<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><ul>
-<li><p>and：两个条件都为true，返回true</p>
+<h4 id="逻辑运算符">逻辑运算符</h4>
+<ul>
+<li>
+<p>and：两个条件都为true，返回true</p>
 </li>
-<li><p>or：两个之中一个为true，返回true</p>
+<li>
+<p>or：两个之中一个为true，返回true</p>
 </li>
-<li><p>逻辑短路：当表达式值已经明确求出就不会执行后面的表达式代码。<br>??? tip “逻辑短路例子”</p>
+<li>
+<p>逻辑短路：当表达式值已经明确求出就不会执行后面的表达式代码。<br>
+::: tip “逻辑短路例子”</p>
   <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">a</span><br>  puts <span class="hljs-string">&quot;调用了a&quot;</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">b</span><br>  puts <span class="hljs-string">&quot;调用了b&quot;</span><br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br><span class="hljs-keyword">end</span><br><br>puts <span class="hljs-string">&quot;---&amp;&amp;短路---&quot;</span><br>a &amp;&amp; b   <span class="hljs-comment"># 两个都执行，因为a是true，结果要看b</span><br><br>puts <span class="hljs-string">&quot;---||短路---&quot;</span><br>a |<span class="hljs-params"></span>| b   <span class="hljs-comment"># 只执行a，因为a是true，已经能决定结果，不再执行b</span><br></code></pre></td></tr></table></figure>
-<p>  输出：</p>
-  <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">---&amp;&amp;短路---<br>调用了a<br>调用了b<br>---||短路---<br>调用了a<br></code></pre></td></tr></table></figure></li>
+<p>输出：</p>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">---&amp;&amp;短路---<br>调用了a<br>调用了b<br>---||短路---<br>调用了a<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-<p>??? tip “逻辑运算符：&amp;&amp; &#x2F; || 与 &amp; &#x2F; | 的区别”<br>    - <code>&amp;&amp;</code> 和 <code>||</code> 是 <strong>逻辑运算符</strong>，具有<strong>短路行为</strong>：如果前一个条件已经可以决定结果，就不会再执行后一个条件。<br>      例如：<code>false &amp;&amp; do_something()</code> 中，<code>do_something()</code> 不会被调用。</p>
-<pre><code>- `&amp;` 和 `|` 是 **按位运算符**，**不具备短路特性**，即使前面的条件已决定结果，也会继续执行后面的表达式。  
-  同时，`&amp;` 和 `|` **可以被重载**，常用于集合操作、自定义对象的运算符重载等场景。
-</code></pre>
-<p>??? tip “重载”<br>    所谓“重载”，就是<strong>重定义操作符对应的方法</strong>。比如下面这个例子：<br>    <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyObject</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">&amp;</span>(<span class="hljs-params">other</span>)<br>        puts <span class="hljs-string">&quot;执行自定义的 &amp; 运算&quot;</span><br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><br>    a = <span class="hljs-title class_">MyObject</span>.new<br>    b = <span class="hljs-title class_">MyObject</span>.new<br>    a &amp; b   <span class="hljs-comment"># 输出：执行自定义的 &amp; 运算</span><br></code></pre></td></tr></table></figure><br>    本质上，&amp;、+、&#x3D;&#x3D; 等都是方法名，调用 a &amp; b 等价于 a.&amp;(b)。这正是ruby语法糖的设计哲学之一。</p>
-<h4 id="unless"><a href="#unless" class="headerlink" title="unless"></a>unless</h4><p><code>unless</code> 是ruby中特有的条件关键字。<br>!!! example “书12页例”<br>    <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:0&gt;</span> x = <span class="hljs-number">4</span><br>=&gt; <span class="hljs-number">4</span><br><span class="hljs-meta prompt_">irb(main):002:0&gt;</span> puts <span class="hljs-string">&quot;This appears to be false&quot;</span> <span class="hljs-keyword">unless</span> x == <span class="hljs-number">4</span><br>=&gt; nil<br>irb(main)<span class="hljs-symbol">:</span><span class="hljs-number">003</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&gt;<br></code></pre></td></tr></table></figure><br>在这个例子中，如果x不等于4才会输出内容。</p>
+<div class="admonition tip">
+<p class="admonition-title">“逻辑运算符：&amp;&amp; / || 与 &amp; / | 的区别”</p>
+<ul>
+<li>
+<p><code>&amp;&amp;</code> 和 <code>||</code> 是 <strong>逻辑运算符</strong>，具有<strong>短路行为</strong>：如果前一个条件已经可以决定结果，就不会再执行后一个条件。<br>
+例如：<code>false &amp;&amp; do_something()</code> 中，<code>do_something()</code> 不会被调用。</p>
+</li>
+<li>
+<p><code>&amp;</code> 和 <code>|</code> 是 <strong>按位运算符</strong>，<strong>不具备短路特性</strong>，即使前面的条件已决定结果，也会继续执行后面的表达式。<br>
+同时，<code>&amp;</code> 和 <code>|</code> <strong>可以被重载</strong>，常用于集合操作、自定义对象的运算符重载等场景。</p>
+</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">“重载”</p>
+<p>所谓“重载”，就是<strong>重定义操作符对应的方法</strong>。比如下面这个例子：</p>
+  <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyObject</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">&amp;</span>(<span class="hljs-params">other</span>)<br>        puts <span class="hljs-string">&quot;执行自定义的 &amp; 运算&quot;</span><br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><br>    a = <span class="hljs-title class_">MyObject</span>.new<br>    b = <span class="hljs-title class_">MyObject</span>.new<br>    a &amp; b   <span class="hljs-comment"># 输出：执行自定义的 &amp; 运算</span><br></code></pre></td></tr></table></figure>
+<p>本质上，&amp;、+、== 等都是方法名，调用 a &amp; b 等价于 a.&amp;(b)。这正是ruby语法糖的设计哲学之一。</p>
+</div>
+<h4 id="unless">unless</h4>
+<p><code>unless</code> 是ruby中特有的条件关键字。</p>
+<div class="admonition example">
+<p class="admonition-title">“书12页例”</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:0&gt;</span> x = <span class="hljs-number">4</span><br>=&gt; <span class="hljs-number">4</span><br><span class="hljs-meta prompt_">irb(main):002:0&gt;</span> puts <span class="hljs-string">&quot;This appears to be false&quot;</span> <span class="hljs-keyword">unless</span> x == <span class="hljs-number">4</span><br>=&gt; nil<br>irb(main)<span class="hljs-symbol">:</span><span class="hljs-number">003</span><span class="hljs-symbol">:</span><span class="hljs-number">0</span>&gt;<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，如果x不等于4才会输出内容。</p>
+</div>
 <p>通俗的解释，<code>unless</code> 可以理解为 <code>if not</code>。带入语言的语境就是 “除非x等于4，否则就打印”</p>
-<h4 id="until循环"><a href="#until循环" class="headerlink" title="until循环"></a>until循环</h4><p>和之前的 <code>unless</code> 一样，通过单词的语义去理解until循环是最方便的。unless是直到的意思，放在语境中就是“一只做某事直到条件达成”<br>!!! example “书13页例”<br>    <figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs ruby2879">irb(main):001:0&gt; x = 10<br>=&gt; 10<br>irb(main):002:0&gt; x = x - 1 until x == 1<br>=&gt; nil<br>irb(main):003:0&gt; x<br>=&gt; 1<br></code></pre></td></tr></table></figure><br>在这个例子中，虽没有显示，但是发生里9次循环，x-&#x3D;1后判断x是否等于1，如果没有则继续，直到x&#x3D;1。</p>
-<h4 id="times循环"><a href="#times循环" class="headerlink" title="times循环"></a>times循环</h4><p><code>Integer</code> 的实例有 <code>times方法</code>，即循环多少次。</p>
+<h4 id="until循环">until循环</h4>
+<p>和之前的 <code>unless</code> 一样，通过单词的语义去理解until循环是最方便的。unless是直到的意思，放在语境中就是“一只做某事直到条件达成”</p>
+<div class="admonition example">
+<p class="admonition-title">“书13页例”</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs ruby2879">irb(main):001:0&gt; x = 10<br>=&gt; 10<br>irb(main):002:0&gt; x = x - 1 until x == 1<br>=&gt; nil<br>irb(main):003:0&gt; x<br>=&gt; 1<br></code></pre></td></tr></table></figure>
+<p>在这个例子中，虽没有显示，但是发生里9次循环，x-=1后判断x是否等于1，如果没有则继续，直到x=1。</p>
+</div>
+<h4 id="times循环">times循环</h4>
+<p><code>Integer</code> 的实例有 <code>times方法</code>，即循环多少次。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:0&gt;</span> <span class="hljs-number">3</span>.times &#123;puts <span class="hljs-string">&quot;a&quot;</span>&#125;<br>a<br>a<br>a<br>=&gt; <span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
 <p>times循环通常配合块使用。</p>
-<h3 id="2-4-鸭子类型"><a href="#2-4-鸭子类型" class="headerlink" title="2.4 鸭子类型"></a>2.4 鸭子类型</h3><p>鸭子类型并不是特定的语法，而是一种编程思想。国外有句谚语：</p>
+<h3 id="2-4-鸭子类型">2.4 鸭子类型</h3>
+<p>鸭子类型并不是特定的语法，而是一种编程思想。国外有句谚语：</p>
 <blockquote>
 <p>“If it walks like a duck and it quacks like a duck, then it probably is a duck.”</p>
 </blockquote>
@@ -319,8 +394,15 @@
 <p>简而言之，不同的类实实现同一套类的名字就是鸭子方法的本质。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Dog</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">speak</span><br>    puts <span class="hljs-string">&quot;Woof!&quot;</span><br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Duck</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">speak</span><br>    puts <span class="hljs-string">&quot;Quack!&quot;</span><br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">make_it_speak</span>(<span class="hljs-params">animal</span>)<br>  animal.speak<br><span class="hljs-keyword">end</span><br><br>make_it_speak(<span class="hljs-title class_">Dog</span>.new)   <span class="hljs-comment"># =&gt; Woof!</span><br>make_it_speak(<span class="hljs-title class_">Duck</span>.new)  <span class="hljs-comment"># =&gt; Quack!</span><br></code></pre></td></tr></table></figure>
 <p>这里的 <code>make_it_speak</code> 函数不在乎参数是 <code>Dog</code> 还是 <code>Duck</code>，只关心你有没有 <code>speak</code> 方法。</p>
-<h2 id="3-第二天：函数，数组与代码块"><a href="#3-第二天：函数，数组与代码块" class="headerlink" title="3.第二天：函数，数组与代码块"></a>3.第二天：函数，数组与代码块</h2><p>!!! abstract<br>    在第二天的学习中，我们将深入 Ruby 的三大基础组成：函数（方法）、数组（Array） 与 代码块（Block）。它们共同构成了 Ruby 编程的核心操作与风格。</p>
-<h3 id="3-1-函数"><a href="#3-1-函数" class="headerlink" title="3.1 函数"></a>3.1 函数</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">funcname</span>(<span class="hljs-params">arg</span>)<br>  statement<br><span class="hljs-keyword">end</span><br>funcname(arg) <span class="hljs-comment"># 调用函数</span><br></code></pre></td></tr></table></figure>
+<h2 id="3-第二天：函数，数组与代码块">3.第二天：函数，数组与代码块</h2>
+<div class="admonition abstract">
+<p class="admonition-title">abstract</p>
+<pre><code>在第二天的学习中，我们将深入 Ruby 的三大基础组成：函数（方法）、数组（Array） 与 代码块（Block）。
+它们共同构成了 Ruby 编程的核心操作与风格。
+</code></pre>
+</div>
+<h3 id="3-1-函数">3.1 函数</h3>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">funcname</span>(<span class="hljs-params">arg</span>)<br>  statement<br><span class="hljs-keyword">end</span><br>funcname(arg) <span class="hljs-comment"># 调用函数</span><br></code></pre></td></tr></table></figure>
 <p>Ruby中函数的定义非常的方便：</p>
 <ul>
 <li>使用 def 关键字定义方法，以 end 结束。</li>
@@ -333,7 +415,8 @@
 <blockquote>
 <p>Ruby 语法强调简洁、可读和自然语言风格，这种灵活的函数调用形式正体现了 Ruby 的设计哲学。</p>
 </blockquote>
-<h3 id="3-2-数组与切片"><a href="#3-2-数组与切片" class="headerlink" title="3.2 数组与切片"></a>3.2 数组与切片</h3><p>数组是一种有序集合，可以存储多个对象，类型可以混合。它类似于 Python 中的 <code>list</code>。</p>
+<h3 id="3-2-数组与切片">3.2 数组与切片</h3>
+<p>数组是一种有序集合，可以存储多个对象，类型可以混合。它类似于 Python 中的 <code>list</code>。</p>
 <ul>
 <li>数组中可以存储不同类型的元素。</li>
 </ul>
@@ -343,7 +426,7 @@
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):002:0&gt;</span> arr[<span class="hljs-number">0</span>]<br>=&gt; <span class="hljs-number">1</span><br><span class="hljs-meta prompt_">irb(main):003:0&gt;</span> arr[-<span class="hljs-number">1</span>]<br>=&gt; <span class="hljs-number">3.0</span><br></code></pre></td></tr></table></figure>
 <ul>
-<li><code>数组名[index] = &#39;&#39;</code> 通过下表修改元素。</li>
+<li><code>数组名[index] = ''</code> 通过下表修改元素。</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):004:0&gt;</span> arr[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;one&#x27;</span><br>=&gt; <span class="hljs-string">&quot;one&quot;</span><br><span class="hljs-meta prompt_">irb(main):005:0&gt;</span> arr<br>=&gt; [<span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>, <span class="hljs-number">3.0</span>]<br></code></pre></td></tr></table></figure>
 <ul>
@@ -362,12 +445,18 @@
 <li><code>数组名[start_inde,end_index]</code> 数组切片，不包含end_index。</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):010:0&gt;</span> arr[<span class="hljs-number">0</span>,<span class="hljs-number">2</span>]<br>=&gt; [<span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>]<br></code></pre></td></tr></table></figure>
+<h3 id="3-3-散列表与符号">3.3 散列表与符号</h3>
+<p>散列表中每个元素是键值对的形式，类似python中的<code>dict</code>。<br>
+如果键是字符，必须在前面添加冒号，叫做符号（Symble）。</p>
+<div class="admonition tip">
+<p class="admonition-title">“为什么散列表使用符号作为键？”</p>
+<pre><code>在 Ruby 中，使用符号（Symbol）作为散列表的键有几个主要原因：
 
-<h3 id="3-3-散列表与符号"><a href="#3-3-散列表与符号" class="headerlink" title="3.3 散列表与符号"></a>3.3 散列表与符号</h3><p>散列表中每个元素是键值对的形式，类似python中的<code>dict</code>。<br>如果键是字符，必须在前面添加冒号，叫做符号（Symble）。<br>!!! tip “为什么散列表使用符号作为键？”<br>    在 Ruby 中，使用符号（Symbol）作为散列表的键有几个主要原因：</p>
-<pre><code>- 符号的定义就是一个固定内存地址的标识。
+- 符号的定义就是一个固定内存地址的标识。
 - 符号在内存中只会存留一个副本，无论在程序中使用多少相同的符号多会指向同一个内存。
 - 符号内存占用非常小
 </code></pre>
+</div>
 <ul>
 <li>散列表通过大括号包裹的形式定义，其中每项对应 <code>key=&gt;value</code></li>
 </ul>
@@ -380,87 +469,134 @@
 <li><code>散列表[key] = value</code> 修改对应key的value</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):003:0&gt;</span> user[<span class="hljs-symbol">:name</span>] = <span class="hljs-string">&quot;m310ctaaa&quot;</span><br>=&gt; <span class="hljs-string">&quot;m310ctaaa&quot;</span><br><span class="hljs-meta prompt_">irb(main):004:0&gt;</span> user<br>=&gt; &#123;<span class="hljs-symbol">:name=&gt;<span class="hljs-string">&quot;m310ctaaa&quot;</span></span>, <span class="hljs-symbol">:age=&gt;</span><span class="hljs-number">17</span>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>散列表还能过模拟命名参数。<br>!!! example “书20页例”<br>    <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:1*</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">tell_the_truth</span>(<span class="hljs-params">options=&#123;&#125;</span>)<br><span class="hljs-meta prompt_">irb(main):002:2*</span>   <span class="hljs-keyword">if</span> options[<span class="hljs-symbol">:profession</span>] == <span class="hljs-symbol">:layer</span><br><span class="hljs-meta prompt_">irb(main):003:2*</span>     <span class="hljs-string">&#x27;it could be believed that this is almost</span><br><span class="hljs-string">certainly not false.&#x27;</span><br><span class="hljs-meta prompt_">irb(main):004:2*</span>   <span class="hljs-keyword">else</span><br><span class="hljs-meta prompt_">irb(main):005:2*</span>     <span class="hljs-literal">true</span><br><span class="hljs-meta prompt_">irb(main):006:1*</span>   <span class="hljs-keyword">end</span><br><span class="hljs-meta prompt_">irb(main):007:0&gt;</span> <span class="hljs-keyword">end</span><br>=&gt; <span class="hljs-symbol">:tell_the_truth</span><br><span class="hljs-meta prompt_">irb(main):008:0&gt;</span> tell_the_truth<br>=&gt; true<br><span class="hljs-meta prompt_">irb(main):009:0&gt;</span> tell_the_truth <span class="hljs-symbol">:profession</span> =&gt; <span class="hljs-symbol">:layer</span><br>=&gt; <span class="hljs-string">&quot;it could be believed that this is almost certainly not false.&quot;</span><br></code></pre></td></tr></table></figure><br><code>options</code>是一个散列表，作为 <code>tell_the_truth</code> 函数的参数，来模拟命名参数。判断如果传入的散列表中，<code>:profession</code> 对应的是 <code>:layer</code> 就返回字符串，否则返回true。这段代码理解起来有几个难点：</p>
+<p>散列表还能过模拟命名参数。</p>
+<div class="admonition example">
+<p class="admonition-title">“书20页例”</p>
+<pre><code><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:1*</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">tell_the_truth</span>(<span class="hljs-params">options=&#123;&#125;</span>)<br><span class="hljs-meta prompt_">irb(main):002:2*</span>   <span class="hljs-keyword">if</span> options[<span class="hljs-symbol">:profession</span>] == <span class="hljs-symbol">:layer</span><br><span class="hljs-meta prompt_">irb(main):003:2*</span>     <span class="hljs-string">&#x27;it could be believed that this is almost</span><br><span class="hljs-string">certainly not false.&#x27;</span><br><span class="hljs-meta prompt_">irb(main):004:2*</span>   <span class="hljs-keyword">else</span><br><span class="hljs-meta prompt_">irb(main):005:2*</span>     <span class="hljs-literal">true</span><br><span class="hljs-meta prompt_">irb(main):006:1*</span>   <span class="hljs-keyword">end</span><br><span class="hljs-meta prompt_">irb(main):007:0&gt;</span> <span class="hljs-keyword">end</span><br>=&gt; <span class="hljs-symbol">:tell_the_truth</span><br><span class="hljs-meta prompt_">irb(main):008:0&gt;</span> tell_the_truth<br>=&gt; true<br><span class="hljs-meta prompt_">irb(main):009:0&gt;</span> tell_the_truth <span class="hljs-symbol">:profession</span> =&gt; <span class="hljs-symbol">:layer</span><br>=&gt; <span class="hljs-string">&quot;it could be believed that this is almost certainly not false.&quot;</span><br></code></pre></td></tr></table></figure>
+</code></pre>
+</div>
+<p><code>options</code>是一个散列表，作为 <code>tell_the_truth</code> 函数的参数，来模拟命名参数。判断如果传入的散列表中，<code>:profession</code> 对应的是 <code>:layer</code> 就返回字符串，否则返回true。这段代码理解起来有几个难点：</p>
 <ul>
-<li><p>调用语句 <code>tell_the_truth :profession =&gt; :layer</code>。之前说过，如果函数只有一个参数可以不加括号，这句代码其实等价于 <code>tell_the_truth (&#123;:profession =&gt; :layer&#125;)</code></p>
+<li>
+<p>调用语句 <code>tell_the_truth :profession =&gt; :layer</code>。之前说过，如果函数只有一个参数可以不加括号，这句代码其实等价于 <code>tell_the_truth (&#123;:profession =&gt; :layer&#125;)</code></p>
 </li>
-<li><p>散列表通过 <code>options[:profession]</code> 来访问键 <code>:profession</code> 的值。这里用的是 <strong>符号作为键</strong>，符合 Ruby 的习惯用法（原因参考前文的 Symbol tip）。</p>
+<li>
+<p>散列表通过 <code>options[:profession]</code> 来访问键 <code>:profession</code> 的值。这里用的是 <strong>符号作为键</strong>，符合 Ruby 的习惯用法（原因参考前文的 Symbol tip）。</p>
 </li>
 </ul>
-<h3 id="3-4-代码块与yield"><a href="#3-4-代码块与yield" class="headerlink" title="3.4 代码块与yield"></a>3.4 代码块与yield</h3><p>在times循环的例子中已经接触过代码块了。</p>
+<h3 id="3-4-代码块与yield">3.4 代码块与yield</h3>
+<p>在times循环的例子中已经接触过代码块了。</p>
 <ul>
 <li>代码块可以理解为一段 <strong>没有名字的函数</strong>。</li>
-<li>代码块有两种书写形式：<ul>
+<li>代码块有两种书写形式：
+<ul>
 <li>当只有一行代码时用花括号 <code>&#123;&#125;</code> 的形式</li>
 <li>多行代码用 <code>do...end</code>。</li>
 </ul>
 </li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-number">3</span>.times &#123; puts <span class="hljs-string">&quot;Hello&quot;</span> &#125;<br><br><span class="hljs-number">3</span>.times <span class="hljs-keyword">do</span><br>  puts <span class="hljs-string">&quot;Hello&quot;</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="块参数"><a href="#块参数" class="headerlink" title="块参数"></a>块参数</h4><p>就和函数有参数一样，代码块也可以接受参数，称为 <strong>块参数</strong>。<br>参数块的形式为 <code>|变量名|</code> ，代码块参数的值由调用它的方法在每次执行时传入。</p>
+<h4 id="块参数">块参数</h4>
+<p>就和函数有参数一样，代码块也可以接受参数，称为 <strong>块参数</strong>。<br>
+参数块的形式为 <code>|变量名|</code> ，代码块参数的值由调用它的方法在每次执行时传入。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:0&gt;</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>].each &#123; |<span class="hljs-params">i</span>| puts i &#125;<br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br>=&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
-
-<h4 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h4><p><code>yield</code> 用于调用代码块。<br><code>yield(参数)</code> 用于传递块参数。</p>
+<h4 id="yield">yield</h4>
+<p><code>yield</code> 用于调用代码块。<br>
+<code>yield(参数)</code> 用于传递块参数。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:1*</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">print_name</span><br><span class="hljs-meta prompt_">irb(main):002:1*</span>   <span class="hljs-keyword">yield</span>(<span class="hljs-string">&quot;m310ct&quot;</span>)<br><span class="hljs-meta prompt_">irb(main):003:0&gt;</span> <span class="hljs-keyword">end</span><br>=&gt; <span class="hljs-symbol">:print_name</span><br><span class="hljs-meta prompt_">irb(main):004:1*</span> print_name <span class="hljs-keyword">do</span> |<span class="hljs-params">name</span>|<br><span class="hljs-meta prompt_">irb(main):005:1*</span>   puts <span class="hljs-string">&quot;Your name is <span class="hljs-subst">#&#123;name&#125;</span>&quot;</span><br><span class="hljs-meta prompt_">irb(main):006:0&gt;</span> <span class="hljs-keyword">end</span><br><span class="hljs-title class_">Your</span> name is m310ct<br>=&gt; nil<br></code></pre></td></tr></table></figure>
 <p>在这个例子中，调用 <code>print_name</code> 函数的时候传入一个打印名字的代码块。<code>print_name</code> 中yield就相当于调用这个代码块并且给它穿入参数。</p>
-<h4 id="block"><a href="#block" class="headerlink" title="&amp;block"></a>&amp;block</h4><p>!!! example “21页例”</p>
+<h4 id="block">&amp;block</h4>
+<div class="admonition example">
+<p class="admonition-title">“21页例”</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:1*</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">call_block</span>(<span class="hljs-params">&amp;block</span>)<br><span class="hljs-meta prompt_">irb(main):002:1*</span>   block.call<br><span class="hljs-meta prompt_">irb(main):003:0&gt;</span> <span class="hljs-keyword">end</span><br>=&gt; <span class="hljs-symbol">:call_block</span><br><span class="hljs-meta prompt_">irb(main):004:1*</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">pass_block</span>(<span class="hljs-params">&amp;block</span>)<br><span class="hljs-meta prompt_">irb(main):005:1*</span>   call_block(&amp;block)<br><span class="hljs-meta prompt_">irb(main):006:0&gt;</span> <span class="hljs-keyword">end</span><br>=&gt; <span class="hljs-symbol">:pass_block</span><br><span class="hljs-meta prompt_">irb(main):007:0&gt;</span> pass_block &#123;puts <span class="hljs-string">&#x27;Hello,block&#x27;</span>&#125;<br><span class="hljs-title class_">Hello</span>,block<br>=&gt; nil<br></code></pre></td></tr></table></figure>
+</div>
 <p>这是一个 <strong>代码块传递机制</strong> 的一个经典例子。</p>
 <ol>
-<li><p><code>call_block</code> 函数</p>
+<li>
+<p><code>call_block</code> 函数</p>
  <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">call_block</span>(<span class="hljs-params">&amp;block</span>)<br>  block.call<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>&amp;block</code> 这个方法接收一个代码块作为参数，并将传进来的代码块封装为一个 <code>Proc</code> 对象。</li>
 <li><code>block.call</code> 执行这个代码块。</li>
 </ul>
-<p> !!! tip “为什么要把代码块转为 Proc 对象？”<br>     - 在 Ruby 中，代码块并不是一个对象。<br>     - 代码块无法当作普通变量使用、传来传去、赋值等操作。<br>     - 如果希望代码块能和普通对象一样使用，就需要用 <code>&amp;block</code> 接收，并且用 <code>.call</code> 调用。</p>
+<div class="admonition tip">
+<p class="admonition-title">“为什么要把代码块转为 Proc 对象？”</p>
+<pre><code> - 在 Ruby 中，代码块并不是一个对象。
+ - 代码块无法当作普通变量使用、传来传去、赋值等操作。
+ - 如果希望代码块能和普通对象一样使用，就需要用 `&amp;block` 接收，并且用 `.call` 调用。
+</code></pre>
+</div>
 </li>
-<li><p><code>pass_block</code> 函数</p>
+<li>
+<p><code>pass_block</code> 函数</p>
  <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">pass_block</span>(<span class="hljs-params">&amp;block</span>)<br>  call_block(&amp;block)<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>pass_block</code> 也接收一个 <code>block</code>（用 <code>&amp;block</code>）。</li>
 <li>它把这个 <code>block</code> 传给另一个方法 <code>call_block</code>。</li>
 <li>传递的时候也需要加 <code>&amp;</code>，否则就是普通对象，<code>call_block</code> 不会把它当成 <code>block</code> 处理。</li>
 </ul>
 </li>
-<li><p>调用 <code>pass_block &#123; puts &#39;Hello, block&#39; &#125;</code></p>
-<p> !!! tip “&amp; 的本质”<br> 总结一句话：你用 <code>&amp;</code> 修饰的参数，在传入 block 时变成 <code>Proc</code>，在传入 <code>Proc</code> 时又能变回 block，<code>&amp;</code> 就是 <code>block</code> 和 <code>Proc</code> 之间的桥梁。<br><br> 举个例子：<br><br> <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">outer</span>(<span class="hljs-params">&amp;block</span>)<br>  inner(&amp;block)<br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">inner</span><br>  puts <span class="hljs-string">&quot;准备执行 block&quot;</span><br>  <span class="hljs-keyword">yield</span><br>  puts <span class="hljs-string">&quot;执行完毕&quot;</span><br><span class="hljs-keyword">end</span><br><br>outer &#123; puts <span class="hljs-string">&quot;我是 block&quot;</span> &#125;<br></code></pre></td></tr></table></figure><br><br> - 在 <code>outer(&amp;block)</code> 会把 <code>block</code> 转为 <code>Proc</code>。<br> - 在 <code>inner(&amp;block)</code> 会把 <code>Proc</code> 转为 <code>block</code>。<br> - 即使方法定义时没有写任何形式参数，只要内部用了 <code>yield</code>，并且调用时传入了 <code>block</code>，<code>yield</code> 就能执行这个 <code>block</code>。这也是为什么 <code>inner</code> 函数没有写形参却可以执行传入的 block 的原因。</p>
+<li>
+<p>调用 <code>pass_block &#123; puts 'Hello, block' &#125;</code></p>
+<div class="admonition tip">
+<p class="admonition-title">“&amp; 的本质”</p>
+<pre><code> 总结一句话：你用 `&amp;` 修饰的参数，在传入 block 时变成 `Proc`，在传入 `Proc` 时又能变回 block，`&amp;` 就是 `block` 和 `Proc` 之间的桥梁。
+
+ 举个例子：
+
+ <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">def</span> <span class="hljs-title function_">outer</span>(<span class="hljs-params">&amp;block</span>)<br>  inner(&amp;block)<br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">inner</span><br>  puts <span class="hljs-string">&quot;准备执行 block&quot;</span><br>  <span class="hljs-keyword">yield</span><br>  puts <span class="hljs-string">&quot;执行完毕&quot;</span><br><span class="hljs-keyword">end</span><br><br>outer &#123; puts <span class="hljs-string">&quot;我是 block&quot;</span> &#125;<br></code></pre></td></tr></table></figure>
+
+ - 在 `outer(&amp;block)` 会把 `block` 转为 `Proc`。
+ - 在 `inner(&amp;block)` 会把 `Proc` 转为 `block`。
+ - 即使方法定义时没有写任何形式参数，只要内部用了 `yield`，并且调用时传入了 `block`，`yield` 就能执行这个 `block`。这也是为什么 `inner` 函数没有写形参却可以执行传入的 block 的原因。
+</code></pre>
+</div>
 </li>
 </ol>
-<h2 id="4-第三天：类、模块与元编程"><a href="#4-第三天：类、模块与元编程" class="headerlink" title="4.第三天：类、模块与元编程"></a>4.第三天：类、模块与元编程</h2><h3 id="4-1-定义类"><a href="#4-1-定义类" class="headerlink" title="4.1 定义类"></a>4.1 定义类</h3><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>    <span class="hljs-built_in">attr_accessor</span> <span class="hljs-symbol">:name</span>, <span class="hljs-symbol">:age</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">initialize</span>(<span class="hljs-params">name, age</span>)<br>        <span class="hljs-variable">@name</span> = name<br>        <span class="hljs-variable">@age</span> = age<br>    <span class="hljs-keyword">end</span><br>    <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">greet</span><br>        <span class="hljs-string">&quot;Hello, my name is <span class="hljs-subst">#&#123;<span class="hljs-variable">@name</span>&#125;</span> and I am <span class="hljs-subst">#&#123;<span class="hljs-variable">@age</span>&#125;</span> years old.&quot;</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br>    <br>person = <span class="hljs-title class_">Person</span>.new(<span class="hljs-string">&quot;m310ct&quot;</span>, <span class="hljs-number">17</span>)<br>puts person.greet<br></code></pre></td></tr></table></figure>
+<h2 id="4-第三天：类、模块与元编程">4.第三天：类、模块与元编程</h2>
+<h3 id="4-1-定义类">4.1 定义类</h3>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>    <span class="hljs-built_in">attr_accessor</span> <span class="hljs-symbol">:name</span>, <span class="hljs-symbol">:age</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">initialize</span>(<span class="hljs-params">name, age</span>)<br>        <span class="hljs-variable">@name</span> = name<br>        <span class="hljs-variable">@age</span> = age<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">greet</span><br>        <span class="hljs-string">&quot;Hello, my name is <span class="hljs-subst">#&#123;<span class="hljs-variable">@name</span>&#125;</span> and I am <span class="hljs-subst">#&#123;<span class="hljs-variable">@age</span>&#125;</span> years old.&quot;</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br>person = <span class="hljs-title class_">Person</span>.new(<span class="hljs-string">&quot;m310ct&quot;</span>, <span class="hljs-number">17</span>)<br>puts person.greet<br></code></pre></td></tr></table></figure>
 <p>上面这个例子定义了一个 <code>Person</code> 类，实现了一个 <code>greet</code> 方法：</p>
 <ul>
-<li><p><code>attr_accessor :name, :age</code> 的作用是给 <code>name</code> 和 <code>age</code> 创建了 <code>getter</code> 和 <code>setter</code> 方法。<br>??? tips “定义getter和setter方法”</p>
-  <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">name</span> <span class="hljs-comment">#getter</span><br>    <span class="hljs-variable">@name</span><br>  <span class="hljs-keyword">end</span><br><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">name=</span>(<span class="hljs-params">val</span>) <span class="hljs-comment">#setter</span><br>    <span class="hljs-variable">@name</span> = val<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br>p = <span class="hljs-title class_">Person</span>.new<br>p.name = (<span class="hljs-string">&quot;m310ct&quot;</span>) <span class="hljs-comment"># 调用setter方法</span><br></code></pre></td></tr></table></figure>
-<p>  <code>setter</code> 方法的形式比较怪异，调用方式也比较怪异。<br>  区别于传统的直接传参数，Ruby 把赋值行为当作“方法调用”。</p>
-</li>
-<li><p><code>initialize</code> 方法会在类实例化时自动执行，一般在其中定义实例变量。</p>
-</li>
+<li><code>attr_accessor :name, :age</code> 的作用是给 <code>name</code> 和 <code>age</code> 创建了 <code>getter</code> 和 <code>setter</code> 方法。<br>
+!!! tips “定义getter和setter方法”  <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">name</span> <span class="hljs-comment">#getter</span><br>    <span class="hljs-variable">@name</span><br>  <span class="hljs-keyword">end</span><br><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">name=</span>(<span class="hljs-params">val</span>) <span class="hljs-comment">#setter</span><br>    <span class="hljs-variable">@name</span> = val<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br>p = <span class="hljs-title class_">Person</span>.new<br>p.name = (<span class="hljs-string">&quot;m310ct&quot;</span>) <span class="hljs-comment"># 调用setter方法</span><br></code></pre></td></tr></table></figure>
+<code>setter</code> 方法的形式比较怪异，调用方式也比较怪异。<br>
+区别于传统的直接传参数，Ruby 把赋值行为当作“方法调用”。<br>
+!!!</li>
+<li><code>initialize</code> 方法会在类实例化时自动执行，一般在其中定义实例变量。</li>
 </ul>
-<h3 id="4-2-Mixin和模块"><a href="#4-2-Mixin和模块" class="headerlink" title="4.2 Mixin和模块"></a>4.2 Mixin和模块</h3><p><strong>模块</strong> 是一种用于组织和复用代码的结构，无法实例化。</p>
+<h3 id="4-2-Mixin和模块">4.2 Mixin和模块</h3>
+<p><strong>模块</strong> 是一种用于组织和复用代码的结构，无法实例化。</p>
 <p><strong>Mixin</strong> 是一种代码复用机制，用于将模块中的方法“混入”类中，从而扩展类的功能，而无需继承。</p>
-<p>!!! example “书25页例”<br>    <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">module</span> <span class="hljs-title class_">ToFile</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">filename</span><br>    <span class="hljs-string">&quot;object_<span class="hljs-subst">#&#123;<span class="hljs-variable language_">self</span>.object_id&#125;</span>.txt&quot;</span><br>  <span class="hljs-keyword">end</span><br><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">to_f</span><br>    <span class="hljs-title class_">File</span>.open(filename, <span class="hljs-string">&#x27;w&#x27;</span>) &#123;|<span class="hljs-params">f</span>| f.write(to_s) &#125;<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>  <span class="hljs-keyword">include</span> <span class="hljs-title class_">ToFile</span><br>  <span class="hljs-built_in">attr_accessor</span> <span class="hljs-symbol">:name</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">initialize</span>(<span class="hljs-params">name</span>)<br>    <span class="hljs-variable">@name</span> = name<br>  <span class="hljs-keyword">end</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">to_s</span><br>    name <br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-title class_">Person</span>.new(<span class="hljs-string">&quot;Alice&quot;</span>).to_f<br></code></pre></td></tr></table></figure><br>    这段代码的主要功能就是将传入的名字保存为一个txt文件。<br>    <code>module ToFile</code> 是一个创建并写入文件的模块，其中定义了两个方法：</p>
-<pre><code>- filename方法：返回特定格式构建好的文件名
+<div class="admonition example">
+<p class="admonition-title">“书25页例”</p>
+<pre><code><figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">module</span> <span class="hljs-title class_">ToFile</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">filename</span><br>    <span class="hljs-string">&quot;object_<span class="hljs-subst">#&#123;<span class="hljs-variable language_">self</span>.object_id&#125;</span>.txt&quot;</span><br>  <span class="hljs-keyword">end</span><br><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">to_f</span><br>    <span class="hljs-title class_">File</span>.open(filename, <span class="hljs-string">&#x27;w&#x27;</span>) &#123;|<span class="hljs-params">f</span>| f.write(to_s) &#125;<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span><br>  <span class="hljs-keyword">include</span> <span class="hljs-title class_">ToFile</span><br>  <span class="hljs-built_in">attr_accessor</span> <span class="hljs-symbol">:name</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">initialize</span>(<span class="hljs-params">name</span>)<br>    <span class="hljs-variable">@name</span> = name<br>  <span class="hljs-keyword">end</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">to_s</span><br>    name <br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-title class_">Person</span>.new(<span class="hljs-string">&quot;Alice&quot;</span>).to_f<br></code></pre></td></tr></table></figure>
+这段代码的主要功能就是将传入的名字保存为一个txt文件。
+`module ToFile` 是一个创建并写入文件的模块，其中定义了两个方法：
+
+- filename方法：返回特定格式构建好的文件名
 - to_f 方法：创建并写入txt文件
 
 在 `class Person` 类中，通过 `inculde ToFile` 混入模块，就好像直接在 `Person` 类中写入了 `filename` 和 `to_f` 方法。
 
 这就是Mixin的体现，`ToFile` 封装了写入文件功能，之后可以复用。
 </code></pre>
-<h3 id="4-3-枚举和集合"><a href="#4-3-枚举和集合" class="headerlink" title="4.3 枚举和集合"></a>4.3 枚举和集合</h3><p><strong>枚举</strong> 和 <strong>比较</strong> 是ruby中至关重要的两个Mixin。</p>
+</div>
+<h3 id="4-3-枚举和集合">4.3 枚举和集合</h3>
+<p><strong>枚举</strong> 和 <strong>比较</strong> 是ruby中至关重要的两个Mixin。</p>
 <ul>
 <li>枚举：要求类实现 <code>each</code> 方法</li>
 <li>比较：要求类实现 <code>&lt;=&gt;</code> 太空船操作符。</li>
 </ul>
-<p>??? tip “太空船操作符”<br>    <code>a &lt;=&gt; b</code>：快速判断大小的操作符。</p>
-<pre><code>- a 大于 b：返回1
+<div class="admonition tip">
+<p class="admonition-title">“太空船操作符”</p>
+<pre><code>`a &lt;=&gt; b`：快速判断大小的操作符。
+
+- a 大于 b：返回1
 - a 小于 b：返回-1
 - a 等于 b：返回0
 </code></pre>
+</div>
 <p><strong>集合</strong> 实现了很多便于使用的可枚举和课比较的方法。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):001:0&gt;</span> a = [<span class="hljs-number">5</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]<br>=&gt; [<span class="hljs-number">5</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]<br></code></pre></td></tr></table></figure>
 <p>先创建一个数组，根据例子解释不同的方法：</p>
@@ -468,41 +604,39 @@
 <li><code>sort</code>：元素升序排列：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):002:0&gt;</span> a.sort<br>=&gt; [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>any?</code>：一个元素满足条件返回 <code>true</code>：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):003:0&gt;</span> a.any? &#123;|<span class="hljs-params">i</span>| i &gt; <span class="hljs-number">3</span>&#125;<br>=&gt; true<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>all?</code>：全部元素满足条件返回 <code>true</code>：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):004:0&gt;</span> a.all? &#123;|<span class="hljs-params">i</span>| i &gt; <span class="hljs-number">5</span>&#125;<br>=&gt; false<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>select</code>：列举所有满足条件的元素，以列表形式返回：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):005:0&gt;</span> a.select &#123;|<span class="hljs-params">i</span>| i &gt; <span class="hljs-number">3</span>&#125;<br>=&gt; [<span class="hljs-number">5</span>, <span class="hljs-number">4</span>]<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>collect</code> 和 <code>map</code>：对每个元素执行操作：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):007:0&gt;</span> a.collect &#123;|<span class="hljs-params">i</span>| i += <span class="hljs-number">1</span>&#125;<br>=&gt; [<span class="hljs-number">6</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>]<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li><code>inject</code> 用于计算元素的和或积：</li>
 </ul>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-meta prompt_">irb(main):008:0&gt;</span> a.inject &#123;|<span class="hljs-params">s,i</span>| s = s+i&#125;<br>=&gt; <span class="hljs-number">15</span><br><span class="hljs-meta prompt_">irb(main):010:0&gt;</span> a.inject &#123;|<span class="hljs-params">s,i</span>| s = s*i&#125;<br>=&gt; <span class="hljs-number">120</span><br><span class="hljs-meta prompt_">irb(main):013:0&gt;</span> a.inject(<span class="hljs-symbol">:+</span>)<br>=&gt; <span class="hljs-number">15</span><br><span class="hljs-meta prompt_">irb(main):014:0&gt;</span> a.inject(<span class="hljs-symbol">:*</span>)<br>=&gt; <span class="hljs-number">120</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="4-4-元编程"><a href="#4-4-元编程" class="headerlink" title="4.4 元编程"></a>4.4 元编程</h3><p><strong>开放类</strong> 允许在任何时候重新打开已经存在的类并且修改其方法。</p>
+<h3 id="4-4-元编程">4.4 元编程</h3>
+<p><strong>开放类</strong> 允许在任何时候重新打开已经存在的类并且修改其方法。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Integer</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">to_chinese</span><br>    [<span class="hljs-string">&quot;零&quot;</span>, <span class="hljs-string">&quot;一&quot;</span>, <span class="hljs-string">&quot;二&quot;</span>, <span class="hljs-string">&quot;三&quot;</span>, <span class="hljs-string">&quot;四&quot;</span>, <span class="hljs-string">&quot;五&quot;</span>, <span class="hljs-string">&quot;六&quot;</span>, <span class="hljs-string">&quot;七&quot;</span>, <span class="hljs-string">&quot;八&quot;</span>, <span class="hljs-string">&quot;九&quot;</span>][<span class="hljs-variable language_">self</span>]<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br>puts <span class="hljs-number">3</span>.to_chinese   <span class="hljs-comment"># 输出: 三</span><br>puts <span class="hljs-number">8</span>.to_chinese   <span class="hljs-comment"># 输出: 八</span><br></code></pre></td></tr></table></figure>
 <p>这个例子就是给 <code>Integer</code> 类新添加一个方法，使数字能方便的转换为中文。</p>
-<h4 id="method-missing"><a href="#method-missing" class="headerlink" title="method_missing"></a>method_missing</h4><p>当ruby找不到某个方法的时候就会调用 <code>method_missing</code> 方法。可以人为重写这个方法来实现自定义功能。<br>通过 <code>self.method_missing</code>定义。有三个形参，分别是未找到的方法名、参数和代码块。</p>
+<h4 id="method-missing">method_missing</h4>
+<p>当ruby找不到某个方法的时候就会调用 <code>method_missing</code> 方法。可以人为重写这个方法来实现自定义功能。<br>
+通过 <code>self.method_missing</code>定义。有三个形参，分别是未找到的方法名、参数和代码块。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Test</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">self</span>.method_missing(method_name, *args, &amp;block)<br>        puts <span class="hljs-string">&quot;method_missing called for <span class="hljs-subst">#&#123;method_name&#125;</span>&quot;</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br><span class="hljs-title class_">Test</span>.qqq  <span class="hljs-comment">#调用一个不存在的方法会调用method_missing</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="元编程和常用方法"><a href="#元编程和常用方法" class="headerlink" title="元编程和常用方法"></a>元编程和常用方法</h4><p>元编程就是<strong>程序写程序</strong>，简而言之即允许在运行时创建&#x2F;删除&#x2F;修改类、方法、变量，像魔术一样操作代码本身。</p>
+<h4 id="元编程和常用方法">元编程和常用方法</h4>
+<p>元编程就是<strong>程序写程序</strong>，简而言之即允许在运行时创建/删除/修改类、方法、变量，像魔术一样操作代码本身。</p>
 <figure class="highlight ruby"><table><tr><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">User</span><br>    [<span class="hljs-symbol">:name</span>,<span class="hljs-symbol">:age</span>].each <span class="hljs-keyword">do</span> |<span class="hljs-params">args</span>|<br>        <span class="hljs-built_in">define_method</span>(<span class="hljs-string">&quot;get_<span class="hljs-subst">#&#123;args&#125;</span>&quot;</span>) <span class="hljs-keyword">do</span><br>            instance_variable_get(<span class="hljs-string">&quot;@<span class="hljs-subst">#&#123;args&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">end</span><br><br>        <span class="hljs-built_in">define_method</span>(<span class="hljs-string">&quot;set_<span class="hljs-subst">#&#123;args&#125;</span>&quot;</span>) <span class="hljs-keyword">do</span> |<span class="hljs-params">value</span>|<br>            instance_variable_set(<span class="hljs-string">&quot;@<span class="hljs-subst">#&#123;args&#125;</span>&quot;</span>,value)<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><br>u = <span class="hljs-title class_">User</span>.new<br>u.set_age(<span class="hljs-number">10</span>)<br>puts u.get_age<br></code></pre></td></tr></table></figure>
-<p>这段代码中，动态的创建了name和age两个实例变量并且依次创建了 <code>get</code> 和 <code>set</code> 方法。<br>常用元编程方法：</p>
+<p>这段代码中，动态的创建了name和age两个实例变量并且依次创建了 <code>get</code> 和 <code>set</code> 方法。<br>
+常用元编程方法：</p>
 <table>
 <thead>
 <tr>
@@ -510,7 +644,8 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>define_method(name, &amp;block)</code></td>
 <td>动态定义实例方法</td>
 </tr>
@@ -531,10 +666,11 @@
 <td>为某个对象单独定义方法，不影响类中其他对象</td>
 </tr>
 <tr>
-<td><code>class_eval</code> &#x2F; <code>instance_eval</code></td>
+<td><code>class_eval</code> / <code>instance_eval</code></td>
 <td>在类或对象上下文中动态执行代码，常用于修改行为</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
         </div>
         
