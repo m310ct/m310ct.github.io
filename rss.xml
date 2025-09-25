@@ -3,11 +3,11 @@
   <title>M310ct&#39;s blog</title>
   
   <subtitle>Welcome to M310ct&#39;s blog !!!</subtitle>
-  <link href="https://blog-bvf.pages.dev/rss.xml" rel="self"/>
+  <link href="https://m310ct.com/rss.xml" rel="self"/>
   
-  <link href="https://blog-bvf.pages.dev/"/>
+  <link href="https://m310ct.com/"/>
   <updated>2025-09-19T16:10:26.680Z</updated>
-  <id>https://blog-bvf.pages.dev/</id>
+  <id>https://m310ct.com/</id>
   
   <author>
     <name>m310ct</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>七周七语言：Ruby</title>
-    <link href="https://blog-bvf.pages.dev/2025/07/31/%E4%B8%83%E5%91%A8%E4%B8%83%E8%AF%AD%E8%A8%80Ruby/"/>
-    <id>https://blog-bvf.pages.dev/2025/07/31/%E4%B8%83%E5%91%A8%E4%B8%83%E8%AF%AD%E8%A8%80Ruby/</id>
+    <link href="https://m310ct.com/2025/07/31/%E4%B8%83%E5%91%A8%E4%B8%83%E8%AF%AD%E8%A8%80Ruby/"/>
+    <id>https://m310ct.com/2025/07/31/%E4%B8%83%E5%91%A8%E4%B8%83%E8%AF%AD%E8%A8%80Ruby/</id>
     <published>2025-07-30T16:00:00.000Z</published>
     <updated>2025-09-19T16:10:26.680Z</updated>
     
@@ -30,19 +30,19 @@
     
     
     
-    <category term="编程语言" scheme="https://blog-bvf.pages.dev/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    <category term="编程语言" scheme="https://m310ct.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-    <category term="七周七语言" scheme="https://blog-bvf.pages.dev/tags/%E4%B8%83%E5%91%A8%E4%B8%83%E8%AF%AD%E8%A8%80/"/>
+    <category term="七周七语言" scheme="https://m310ct.com/tags/%E4%B8%83%E5%91%A8%E4%B8%83%E8%AF%AD%E8%A8%80/"/>
     
-    <category term="Ruby" scheme="https://blog-bvf.pages.dev/tags/Ruby/"/>
+    <category term="Ruby" scheme="https://m310ct.com/tags/Ruby/"/>
     
   </entry>
   
   <entry>
     <title>重构VSCode：打造高效开发环境</title>
-    <link href="https://blog-bvf.pages.dev/2025/07/20/%E9%87%8D%E6%9E%84VSCode%EF%BC%9A%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
-    <id>https://blog-bvf.pages.dev/2025/07/20/%E9%87%8D%E6%9E%84VSCode%EF%BC%9A%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</id>
+    <link href="https://m310ct.com/2025/07/20/%E9%87%8D%E6%9E%84VSCode%EF%BC%9A%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/"/>
+    <id>https://m310ct.com/2025/07/20/%E9%87%8D%E6%9E%84VSCode%EF%BC%9A%E6%89%93%E9%80%A0%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</id>
     <published>2025-07-19T16:00:00.000Z</published>
     <updated>2025-08-24T15:13:13.397Z</updated>
     
@@ -54,16 +54,16 @@
     
     
     
-    <category term="VSCode" scheme="https://blog-bvf.pages.dev/tags/VSCode/"/>
+    <category term="VSCode" scheme="https://m310ct.com/tags/VSCode/"/>
     
-    <category term="开发工具" scheme="https://blog-bvf.pages.dev/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
+    <category term="开发工具" scheme="https://m310ct.com/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>轻量数据库的正确打开方式：Python x SQLite 教程</title>
-    <link href="https://blog-bvf.pages.dev/2025/06/09/%E8%BD%BB%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%EF%BC%9APython%20%C3%97%20SQLite%20%E6%95%99%E7%A8%8B/"/>
-    <id>https://blog-bvf.pages.dev/2025/06/09/%E8%BD%BB%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%EF%BC%9APython%20%C3%97%20SQLite%20%E6%95%99%E7%A8%8B/</id>
+    <link href="https://m310ct.com/2025/06/09/%E8%BD%BB%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%EF%BC%9APython%20%C3%97%20SQLite%20%E6%95%99%E7%A8%8B/"/>
+    <id>https://m310ct.com/2025/06/09/%E8%BD%BB%E9%87%8F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%89%93%E5%BC%80%E6%96%B9%E5%BC%8F%EF%BC%9APython%20%C3%97%20SQLite%20%E6%95%99%E7%A8%8B/</id>
     <published>2025-06-08T16:00:00.000Z</published>
     <updated>2025-09-19T16:10:51.480Z</updated>
     
@@ -74,21 +74,21 @@
     
     
     
-    <category term="编程语言" scheme="https://blog-bvf.pages.dev/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    <category term="编程语言" scheme="https://m310ct.com/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
     
     
-    <category term="Python" scheme="https://blog-bvf.pages.dev/tags/Python/"/>
+    <category term="Python" scheme="https://m310ct.com/tags/Python/"/>
     
-    <category term="SQLite" scheme="https://blog-bvf.pages.dev/tags/SQLite/"/>
+    <category term="SQLite" scheme="https://m310ct.com/tags/SQLite/"/>
     
-    <category term="数据库" scheme="https://blog-bvf.pages.dev/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <category term="数据库" scheme="https://m310ct.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
   <entry>
     <title>hexploit使用指南</title>
-    <link href="https://blog-bvf.pages.dev/2025/01/24/hexploit%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
-    <id>https://blog-bvf.pages.dev/2025/01/24/hexploit%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
+    <link href="https://m310ct.com/2025/01/24/hexploit%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+    <id>https://m310ct.com/2025/01/24/hexploit%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
     <published>2025-01-23T16:00:00.000Z</published>
     <updated>2025-09-19T16:09:38.804Z</updated>
     
@@ -100,7 +100,7 @@
     
     
     
-    <category term="Hexo" scheme="https://blog-bvf.pages.dev/tags/Hexo/"/>
+    <category term="Hexo" scheme="https://m310ct.com/tags/Hexo/"/>
     
   </entry>
   
